@@ -1,0 +1,26 @@
+.ShoppingCart {
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.053);
+  height: 100%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ShoppingCart-logo {
+  padding-top: 5px;
+  height: 80px;
+  width: 100px;
+  pointer-events: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.separate-page {
+  display: flex;
+  padding-left: 70px;
+}

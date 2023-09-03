@@ -1,0 +1,34 @@
+.item-info {
+  border-style: solid;
+  border-color: transparent;
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.item-image {
+  height: 400px;
+  width: 300px;
+  margin-bottom: 0px;
+}
+
+.infos-container {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.infos {
+  padding-bottom: 5px;
+}
+
+.infos-link:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.infos-price {
+  padding-bottom: 5px;
+}

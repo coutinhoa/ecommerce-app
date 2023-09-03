@@ -1,0 +1,40 @@
+.home-page {
+  background-color: white;
+  height: 100%;
+}
+
+.previous-next-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.move-previous-page {
+  margin-left: 30%;
+}
+
+.moving-previous-page {
+  width: 130px;
+  background-color: rgba(255, 166, 0, 0.285);
+  border-color: rgba(255, 166, 0, 0.285);
+  box-shadow: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.move-next-page {
+  margin-right: 30%;
+}
+
+.moving-next-page {
+  width: 130px;
+  background-color: rgba(255, 166, 0, 0.285);
+  border-color: rgba(255, 166, 0, 0.285);
+  box-shadow: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: bold;
+  align-self: center;
+}

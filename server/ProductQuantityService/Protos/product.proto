@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProductQuantityService";
+
+package greet;
+
+service ProductQuantity {
+  rpc getProductQuantity (QuantityRequest) returns (QuantityReply);
+}
+
+message QuantityRequest {
+  int32 id = 1;
+}
+
+message QuantityReply {
+  int32 quantity = 1;
+}

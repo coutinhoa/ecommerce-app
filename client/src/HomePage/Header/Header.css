@@ -1,0 +1,79 @@
+.header-two {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 50px;
+  background-color: white;
+  padding-bottom: 20px;
+  margin-top: 15px;
+}
+
+.identity-buttons {
+  cursor: pointer;
+  background-color: white;
+  border-color: white;
+  margin-left: 20px;
+  box-shadow: none;
+}
+
+.logo {
+  height: 30px;
+  width: 100px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons {
+  cursor: pointer;
+  padding-right: 30px;
+}
+
+.cart-link {
+  cursor: pointer;
+  padding-right: 30px;
+}
+
+.your-warenkorb {
+  cursor: pointer;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.cart-hover {
+  display: none;
+}
+
+.al:hover + .cart-hover {
+  margin-top: 10px;
+  display: block;
+  border-style: solid;
+  border-color: black;
+  height: 200px;
+}
+
+.go-to-cart {
+  background-color: white;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.go-shopping {
+  padding: 15px;
+  background-color: #d0d1d3;
+}
+
+.go-shopping-button {
+  width: 100%;
+  border-style: solid;
+  border-color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 10px;
+}

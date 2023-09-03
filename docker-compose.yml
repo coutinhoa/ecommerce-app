@@ -1,0 +1,139 @@
+version: '3'
+
+services:
+  user-postgresql:
+    image: 'bitnami/postgresql:15.3.0'
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=very-secure-password
+      - POSTGRESQL_DATABASE=user_db
+
+
+  order-postgresql:
+    image: 'bitnami/postgresql:15.3.0'
+    ports:
+      - 25432:5432
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=very-secure-password
+      - POSTGRESQL_DATABASE=order_db
+
+
+  shopping-cart-postgresql:
+    image: 'bitnami/postgresql:15.3.0'
+    ports:
+      - 35432:5432
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=very-secure-password
+      - POSTGRESQL_DATABASE=shopping_cart_db
+
+  warehouse-postgresql:
+    image: 'bitnami/postgresql:15.3.0'
+    ports:
+      - 45432:5432
+    environment:
+      - POSTGRESQL_USERNAME=user
+      - POSTGRESQL_PASSWORD=very-secure-password
+      - POSTGRESQL_DATABASE=warehouse_db
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+
+  kafka-server-1:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: EXTERNAL:PLAINTEXT,CLIENT:PLAINTEXT
+      KAFKA_LISTENERS: EXTERNAL://localhost:29092,CLIENT://kafka-server-1:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
+      KAFKA_ADVERTISED_LISTENERS: EXTERNAL://localhost:29092,CLIENT://kafka-server-1:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR_MIN_INSYNC_REPLICAS: 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+
+
+  product-quantity:
+    build:
+      context: ./server/ProductQuantityService/
+    depends_on:
+      - warehouse-postgresql
+    ports:
+      - 5164:80
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+
+#  frontend:
+#    image: node:18-alpine
+#    container_name: frontend
+#    build:
+#      context: ./client/
+#    ports:
+#      - '3006:3006'
+
+
+  #  backend-shopping-cart:
+  #    image: 'shopping-cart-project:latest'
+  #    build:
+  #      context: ./shopping-cart-project
+  #    depends_on:
+  #      - shopping-cart-postgresql
+  #    environment:
+  #      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
+  #      - SPRING_DATASOURCE_USERNAME=user
+  #      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+
+
+#  backend-order:
+#    image: 'order-project:latest'
+#    build:
+#      context: ./order-project
+#    depends_on:
+#      - order-postgresql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-postgresql:5432/order_db
+#      - SPRING_DATASOURCE_USERNAME=user
+#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+#
+#
+#  backend-user:
+#    image: 'user-project:latest'
+#    build:
+#      context: ./user-project
+#    depends_on:
+#      - user-postgresql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-postgresql:5432/user_db
+#      - SPRING_DATASOURCE_USERNAME=user
+#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+
+
+#  backend-warehouse:
+#    image: 'warehouse-project:latest'
+#    build:
+#      context: ./warehouse-project
+#    depends_on:
+#      - warehouse-postgresql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://warehouse-postgresql:5432/warehouse_db
+#      - SPRING_DATASOURCE_USERNAME=user
+#      - SPRING_DATASOURCE_PASSWORD=very-secure-password

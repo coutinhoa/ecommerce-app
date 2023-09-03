@@ -1,0 +1,845 @@
+[
+  {
+    "id": 1,
+    "type": "Sandals",
+    "name": "Superfit",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/a7ef4c245a083d5db2a2ac3f1669100d/af0648cd68f8472aa8fed72e6fb060a2.jpg?imwidth=303&filter=packshot",
+    "price": 20,
+    "color": "Black",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 1, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 2,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 3, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 4, "rating": 5, "description": "Amazing", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "LEGO WEAR",
+    "type": "Hat",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/00496cb257c14862a757057ed5831c2a/158846a7e99a4393a075bf8a32792e84.jpg?imwidth=1800&filter=packshot",
+    "price": 5,
+    "color": "Blue",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Kid",
+    "reviews": [
+      { "id": 5, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 6,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      {
+        "id": 7,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "26.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jack Wolfshirt",
+    "type": "T-shirt",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/09a264c87e874590bcf163724213e3ad/3b382407a21b4628abd6944e16233775.jpg?imwidth=1800&filter=packshot",
+    "price": 10,
+    "color": "Green",
+    "quantity": 2,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 8, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 9,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 10, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 11,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 12,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 13, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 14,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "Pants",
+    "name": " Palazzo",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/21b967f22eb244c3a74aeb637641e4f3/b349ab8211b942b0915f3a985626b7f3.jpg?imwidth=1800&filter=packshot",
+    "price": 19.63,
+    "color": "Strips",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 15, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Idalia",
+    "type": "Handbag",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/d55d46c9880d401d9b865d9ef9def409/1fff129d7d404f468b87f94f869c9b1c.jpg?imwidth=1800&filter=packshot",
+    "price": 53.5,
+    "color": "Camel",
+    "quantity": "1",
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 16,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 17,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.10.2021"
+      },
+      { "id": 18, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 19,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 20,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 21, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 22, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 23,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 24, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      { "id": 25, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Dry",
+    "type": "T-shirt",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/001b3f8d93374b0291e4c4317a241148/b74686b96aa04a0cbfe356dd9549bcbf.jpg?imwidth=1800&filter=packshot",
+    "price": 13.56,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 26, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 27,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 28, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 29, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Pleated skirt",
+    "type": "Skirt",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/d2c1f40f9588486d88962ccb10ab5033/c1aadf88f3bc477485f33fd757f800f0.jpg?imwidth=400&filter=packshot",
+    "price": 20,
+    "color": "Orange",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 30, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 31,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "type": "Jacket",
+    "name": "Margot",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/b64ba763bfcb46ac80dc2e970533283f/ec3dea43945f41b2b2bfcebb7944046e.jpg?imwidth=156&filter=packshot",
+    "price": 20,
+    "color": "Black",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 32, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "6Pack",
+    "type": "Socks",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/3b9021561e6f4c1da4309baa906a20bd/c03a3f66b1164699be832233fed8c8dc.jpg?imwidth=400&filter=packshot",
+    "price": 6.99,
+    "color": "Black",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 33, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 34,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 35, "rating": 4, "description": "Good", "date": "26.09.2021" }
+    ]
+  },
+  {
+    "id": 10,
+    "type": "Shorts",
+    "name": "Hunter",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/9a069d5d0316331da4c831670ede9645/060f625d34514574b336f8b6836fbf41.jpg?imwidth=1800",
+    "price": 24.99,
+    "color": "Black",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 36, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 37,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.10.2021"
+      },
+      { "id": 38, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 39, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 40,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "type": "Trainers",
+    "name": "Adidas",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/6468c4e37ee7499fa1545dc4d1027ee2/57d2b24dae2f475cac08b6a2b984e4fe.jpg?imwidth=1800&filter=packshot",
+    "price": 89.32,
+    "color": "Blue",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Man",
+    "reviews": [
+      { "id": 41, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      { "id": 42, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 12,
+    "type": "Shorts",
+    "name": "Bergamot",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/ff2704af195b497aac11c4dac0e8c778/bd2f62232e3d4c4ea5402de5a0fd86fa.jpg?imwidth=1800",
+    "price": 21,
+    "color": "green",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Man",
+    "reviews": [
+      { "id": 43, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      { "id": 44, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      { "id": 45, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 46,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+
+  {
+    "id": 13,
+    "type": "Sandals",
+    "name": "Superfit",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/89f3c89d84e43d7d8ccc7f86901b4c92/d1e34ed6b24c41b6ac5d376975db81a3.jpg?imwidth=1800",
+    "price": 20,
+    "color": "Black",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 47, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 48,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 49, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 50,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 51,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 52, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      {
+        "id": 53,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 54,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 55, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 10,
+        "rating": 3,
+        "description": "Good",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 56,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 57, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 58, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 14,
+    "type": "T-shirt",
+    "name": "Only",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/fa9f4edf054246f4aea6ddcded52a652/8cd6739e3c8740ce9296bc24edebe8d7.jpg?imwidth=156&filter=packshot",
+    "price": 23.59,
+    "color": "Blue",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 59, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 60,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      {
+        "id": 61,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+
+  {
+    "id": 15,
+    "type": "T-shirt",
+    "name": "WE Fashion",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/1026a96a475d43ccbc93debab7e852d9/51948ea7adc44fac864f30b21d0d7fa5.jpg?imwidth=1800&filter=packshot",
+    "price": 9.8,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Kid",
+    "reviews": [
+      { "id": 62, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 63,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 64, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      { "id": 65, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 16,
+    "type": "Shorts",
+    "name": "Minotti",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/00ec440216104df8a08a3e4cea018b17/1e9c01cae78b4c608c863670c7199b8f.jpg?imwidth=1800&filter=packshot",
+    "price": 22.13,
+    "color": "Denim",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Kid",
+    "reviews": [
+      { "id": 66, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      { "id": 67, "rating": 4, "description": "Good", "date": "10.10.2021" },
+      { "id": 68, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 69,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 70,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 71, "rating": 4, "description": "Good", "date": "26.09.2021" }
+    ]
+  },
+  {
+    "id": 17,
+    "type": "Skirt",
+    "name": "Only",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/974f8fd3e391404fb2f8eafbf883476a/398ac6cf3006464897400107aa3108f4.jpg?imwidth=1800",
+    "price": 12,
+    "color": "blue",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 72,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 73,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 74, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      {
+        "id": 75,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "type": "Handbag",
+    "name": "Guess",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/68758392035b429ca06eb05ffea2fe14/0925e6f9eaeb46dfa212206530ce2ca4.jpg?imwidth=1800&filter=packshot",
+    "price": 32.73,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 76,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "type": "T-shirt",
+    "name": "WE Fashion",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/9821f35c953c43ba9c339dd7a32f9c00/6c587dac33d34c489b70f49697a9e48f.jpg?imwidth=1800&filter=packshot",
+    "price": 10.5,
+    "color": "Pink",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Kid",
+    "reviews": [
+      {
+        "id": 77,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 78,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 79, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 80,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 81,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 82, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 83,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+
+  {
+    "id": 20,
+    "type": "Trainers",
+    "name": "Calvin Klein",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/8b90063bb8044c0aa70759c79f13facb/74ddd66f2a794d0392d9a56a171452c3.jpg?imwidth=762&filter=packshot",
+    "price": 91.45,
+    "color": "Pink",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 84,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 85,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 86, "rating": 4, "description": "Good", "date": "26.09.2021" }
+    ]
+  },
+  {
+    "id": 21,
+    "type": "Jacket",
+    "name": "Only",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/2c3107abfbb24d53b2edea56b5b75bb0/c25c0600527f4d5aa7bb46ee0c542a2f.jpg?imwidth=1800&filter=packshot",
+    "price": 23,
+    "color": "Green",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 87, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 88,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 89, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      { "id": 90, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 22,
+    "type": "Trainers",
+    "name": "Adidas",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/ed819fb645dd48599da7d5ca6df5907b/3372833199d541a792c9cfd6aa2936e0.jpg?imwidth=1800&filter=packshot",
+    "price": 106,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 91, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 92,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "type": "Trainers",
+    "name": "Nike",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/e3b062feae224c709ba449758f91527a/e0bd2e095dc646f9bc72111ca2c8bc4e.jpg?imwidth=1800",
+    "price": 101.34,
+    "color": "Black",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      {
+        "id": 93,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 94,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 95, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 96,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 97,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 98, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 99,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      { "id": 100, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      { "id": 101, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 102,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "type": "T-shirt",
+    "name": "Nike",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/824cb3c94d3f482fb0af8dbfe864a898/f7634ea7a4ae4022ab7435acb5c96fbf.jpg?imwidth=762&filter=packshot",
+    "price": 25,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Man",
+    "reviews": [
+      {
+        "id": 103,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 103,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 105, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 106,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "type": "Jacket",
+    "name": "Nike",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/1a53376d65ea3a84bf24912b2f4432cf/7e16a3301816443697782c880261b54f.jpg?imwidth=1800&filter=packshot",
+    "price": 36.99,
+    "color": "Grey",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 107, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 108,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 109, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 110,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 111,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 112, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 113,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 114,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "type": "Handbag",
+    "name": "Guess",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/afcccae33ca344469ded8b432ccf4bb4/ab4d1067f3754479b9f23a4218141724.jpg?imwidth=1800&filter=packshot",
+    "price": 70.8,
+    "color": "Brown",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 115,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      { "id": 116, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      {
+        "id": 117,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "26.09.2021"
+      }
+    ]
+  },
+
+  {
+    "id": 27,
+    "type": "Jacket",
+    "name": "Nike",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/483dd1a431484eebb62edda18be6e6c7/e466cf9efe7c47f998b9ae80e3c2b623.jpg?imwidth=156&filter=packshot",
+    "price": 36.45,
+    "color": "Green",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Man",
+    "reviews": [
+      { "id": 118, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 119,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 120, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 121,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "type": "T-shirt",
+    "name": "Nike",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/caff0bdac4bd42e392e67a3ecbb0bcfa/b28df894778643388d36593b466a67de.jpg?imwidth=156&filter=packshot",
+    "price": 29.95,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": false,
+    "identity": "Man",
+    "reviews": [
+      {
+        "id": 122,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 123,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 124, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
+  },
+  {
+    "id": 29,
+    "type": "Trainers",
+    "name": "Adidas",
+    "pictures": "https://img01.ztat.net/article/spp-media-p1/a27bfc6d0e23499b91f5d78318980af9/3419924dde0b43de943aeb01aa13fe34.jpg?imwidth=156&filter=packshot",
+    "price": 106.45,
+    "color": "White",
+    "quantity": 1,
+    "premiumDelivery": true,
+    "identity": "Woman",
+    "reviews": [
+      { "id": 125, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 126,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 127, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 128,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      { "id": 129, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      { "id": 130, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 131,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
+  }
+]
