@@ -1,46 +1,42 @@
 package warehouse.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
-@NoArgsConstructor
 @Entity
 @Component
 @Table(name = "reviews")
+@NoArgsConstructor
 public class Review {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @Column(name = "rating", nullable = false)
+    @Column(name = "rating")
     private int rating;
 
-    @Column(name = "description", nullable = false)
-    @NonNull
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "date", nullable = false)
-    @NonNull
+    @Column(name = "date")
     private String date;
 
     @ManyToOne
-    @JoinColumn(name = "garment_id", nullable = false, referencedColumnName = "id")
-    @JsonIgnore
+    @JoinColumn(name = "garment_id", referencedColumnName = "id")
+    @JsonBackReference
     private WarehouseProduct garment;
 
-    public WarehouseProduct getGarment() {
-        return garment;
-    }
-
-    public void setGarment(WarehouseProduct warehouseProduct) {
+    public Review(String date, int rating, String description) {
     }
 }

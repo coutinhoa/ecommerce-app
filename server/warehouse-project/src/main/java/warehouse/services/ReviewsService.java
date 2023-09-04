@@ -1,13 +1,15 @@
 package warehouse.services;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import warehouse.dto.ReviewDTO;
 import warehouse.entities.Review;
 import warehouse.entities.WarehouseProduct;
 import warehouse.repositories.ProductRepository;
 import warehouse.repositories.ReviewsRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReviewsService {
@@ -19,14 +21,26 @@ public class ReviewsService {
         this.productRepository = productRepository;
     }
 
+    public List<Review> getAllReviews() {
+        return repository.findAll();
+    }
+
     public List<Review> getReviews(Integer garment_id) {
         return repository.findByGarmentId(garment_id);
     }
 
-    public Review createReview(Review newReview, Integer garment_id) {
-        Optional<WarehouseProduct> g = productRepository.findById(Long.valueOf(garment_id));
-        newReview.setGarment(g.get());
-        repository.save(newReview);
-        return newReview;
+    @Transactional
+    public void createReview(ReviewDTO newReview, Long productId) {
+        WarehouseProduct warehouseProduct = productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found"));
+
+        System.out.println(newReview.getRating());
+        System.out.println(newReview.getDescription());
+        Review review = new Review();
+        review.setDescription(newReview.getDescription());
+        review.setRating(newReview.getRating());
+        review.setDate(newReview.getDate());
+        review.setGarment(warehouseProduct);
+        repository.save(review);
     }
 }

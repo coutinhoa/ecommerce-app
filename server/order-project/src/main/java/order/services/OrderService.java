@@ -9,6 +9,7 @@ import order.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class OrderService {
     public Order createOrderWithProducts(OrderDTO orderRequest) {
         Order order = new Order();
         order.setTotalPrice(orderRequest.getTotalPrice());
+        order.setCreatedTimestamp(OffsetDateTime.now());
         order.setUserId(orderRequest.getUserId());
 
         List<Product> products = new ArrayList<>();

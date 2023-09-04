@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import "./App.css";
 import Login from "./Login/Login";
 import ItemPage from "../src/ItemPage/ItemPage";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
-
+  const [item, setItem] = useState();
   /**
    * Adds an item to the shopping cart.
    * If the item already exists, increments the quantity of the item by 1.
    * else adds to shopping cart.
    * @param item
    */
-  const addItemToShoppingCart = (item) => {
+  /*const addItemToShoppingCart = (item) => {
     const cartItem = shoppingCart.find((i) => i.id === item.id);
 
     if (cartItem) {
@@ -30,6 +32,14 @@ export const App = () => {
       const newShoppingCartItem = { ...item, quantity: 1 };
       setShoppingCart([...shoppingCart, newShoppingCartItem]);
     }
+  };*/
+
+  const addItemToShoppingCart = (item) => {
+    fetch(`http://localhost:8081/api/v1/shopping-cart`, {
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then((response) => setItem(response));
   };
 
   const updateItemQuantity = (item, event) => {
@@ -66,9 +76,24 @@ export const App = () => {
   // set up cart so it has all the elements zou want, set Shopping Cart as the fullz readz cart, setState only updates when the next render is executed
   // if itemAdded starts at false, whats the value of added, setItemAdded(true); const added = itemAdded; //its false until the next render, so onlz after we leave the current function does the value get updated
 
-  const removeItem = (item) => {
+  /*const removeItem = (item) => {
     const deleteItem = shoppingCart.filter((i) => i !== item);
     setShoppingCart(deleteItem);
+  };*/
+
+  const removeItem = (id) => {
+    fetch(`http://localhost:8081/api/v1/shopping-cart/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(() => {
+        fetch(`http://localhost:8081/api/v1/shopping-cart`, {
+          method: "GET",
+        });
+        toast.warning("You deleted an item", {
+          position: toast.POSITION.TOP_LEFT,
+        });
+      });
   };
 
   return (

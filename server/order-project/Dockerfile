@@ -12,5 +12,5 @@ ENV JAR_NAME=order-project-0.0.1-SNAPSHOT.jar
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 COPY --from=BUILD $APP_HOME .
-EXPOSE 8083
+EXPOSE 8080
 ENTRYPOINT exec java -jar ${APP_HOME}build/libs/$JAR_NAME

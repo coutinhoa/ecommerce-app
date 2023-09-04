@@ -1,5 +1,6 @@
 package order.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -50,6 +51,7 @@ public class Product implements Serializable {
     @Column(name = "product_id", nullable = false)
     private Long productId;
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", nullable = false, referencedColumnName = "id")
+    @JsonIgnore
     private Order order;
 }

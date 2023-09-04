@@ -1,11 +1,12 @@
 package order.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +28,9 @@ public class Order implements Serializable {
     private double totalPrice;
 
     @Column(name = "created_timestamp", nullable = false)
-    private LocalDateTime createdTimestamp;
+    private OffsetDateTime createdTimestamp;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @OneToMany(mappedBy = "order")
     private List<Product> products = new ArrayList<>();
 
 }

@@ -18,4 +18,5 @@ public class ReviewDTO implements Serializable {
     private String description;
     private String date;
     private Long garment_id;
+
 }

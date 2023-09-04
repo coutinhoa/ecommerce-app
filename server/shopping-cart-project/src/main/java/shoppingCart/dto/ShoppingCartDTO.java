@@ -1,11 +1,9 @@
 package shoppingCart.dto;
-import jakarta.persistence.Column;
+
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 
 @Data
@@ -20,8 +18,6 @@ public class ShoppingCartDTO implements Serializable {
 
     private Long userId;
 
-    private double totalPrice;
-
-    private LocalDateTime createdTimestamp;
+    //    private double totalPrice;
     private List<ProductDTO> products;
 }

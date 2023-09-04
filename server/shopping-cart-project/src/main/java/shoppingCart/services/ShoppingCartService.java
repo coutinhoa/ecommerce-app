@@ -7,7 +7,6 @@ import shoppingCart.dto.ProductDTO;
 import shoppingCart.dto.ShoppingCartDTO;
 import shoppingCart.entities.Product;
 import shoppingCart.entities.ShoppingCart;
-import shoppingCart.exceptions.QuantityNotAvailableException;
 import shoppingCart.repositories.ShoppingCartRepository;
 
 import java.util.ArrayList;
@@ -28,38 +27,48 @@ public class ShoppingCartService {
         this.productQuantityService = productQuantityService;
     }
 
-    public List<ShoppingCart> getAll(String name) {
+    public List<ShoppingCart> getAll() {
         return shoppingCartRepository.findAll();
     }
 
-    public ShoppingCart createCartWithProducts(ShoppingCartDTO orderRequest) {
+    public ShoppingCart addProducts(ShoppingCartDTO orderRequest) {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setTotalPrice(orderRequest.getTotalPrice());
-        shoppingCart.setUserId(orderRequest.getUserId());
+        shoppingCart.setUserId(1L);
 
         List<Product> products = new ArrayList<>();
         for (ProductDTO productDTO : orderRequest.getProducts()) {
             Product product = new Product();
-            product.setQuantity(productDTO.getQuantity());
+            product.setQuantity(1);
             product.setName(productDTO.getName());
             product.setType(productDTO.getType());
-            product.setColour(productDTO.getColour());
-            product.setPremiumDelivery(productDTO.isPremiumDelivery());
-            product.setIdentity(productDTO.getIdentity());
             product.setProductId(productDTO.getProductId());
             product.setShopping_cart(shoppingCart);
             products.add(product);
-
-            int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(productDTO.getProductId()));
-            if (availableQuantityWarehouse < productDTO.getQuantity()) {
-                throw new QuantityNotAvailableException();
-            }
         }
-
         shoppingCart.setProducts(products);
 
-        kafkaTemplate.send("shopping-cart-topic", shoppingCart);
-
         return shoppingCartRepository.save(shoppingCart);
+    }
+
+    public void deleteItem(Long id) {
+        shoppingCartRepository.deleteById(id);
+    }
+
+    public void purchaseOrder() {
+
+        /*List<ShoppingCart> cart = shoppingCartRepository.findAll();
+
+        for(ShoppingCart product : cart){
+            product = cart.getProducts();
+            for (Product product : cart.getProducts()) {
+                int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getProductId()));
+                if (availableQuantityWarehouse < product.getQuantity()) {
+                    throw new QuantityNotAvailableException();
+                }
+            }
+        }
+        kafkaTemplate.send("shopping-cart-topic", (ShoppingCart) cart);
+        shoppingCartRepository.deleteAll();*/
+
     }
 }

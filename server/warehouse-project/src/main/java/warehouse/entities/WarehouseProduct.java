@@ -1,5 +1,6 @@
 package warehouse.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -54,6 +55,7 @@ public class WarehouseProduct {
     private Set<Picture> pictures;
 
     @OneToMany(mappedBy = "garment")
+    @JsonManagedReference
     private Set<Review> reviews;
 
     @OneToMany(mappedBy = "garment")

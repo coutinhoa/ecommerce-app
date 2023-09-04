@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="" />
+    <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/src/ItemPage/Rating/Rating.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ItemPage/Rating/Rating.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../conf.d/my_conf.conf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,17 +39,18 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/user-project">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/order-project">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="event-driven-architecture-main" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="event-driven-architecture-main" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="server" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -83,26 +87,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/couti/Desktop/ecommerce-app/server&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "code.cleanup.on.save": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-18",
+    "last_opened_file_path": "C:/Users/couti/Desktop/ecommerce-app/docker-compose.yml",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\couti\Desktop\ecommerce-app\server\order-project" />
       <recent name="C:\Users\couti\Desktop\event-driven-architecture-main\order-project" />
       <recent name="C:\Users\couti\Desktop\event-driven-architecture-main\warehouse-project\src\main\java\warehouse" />
       <recent name="C:\Users\couti\Desktop\event-driven-architecture-main\warehouse-project\src\main\java\warehouse\controllers" />
       <recent name="C:\Users\couti\Desktop\event-driven-architecture-main\warehouse-project\src\main\resources\db\migration" />
-      <recent name="C:\Users\couti\Desktop\event-driven-architecture-main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\couti\Desktop\event-driven-architecture-main\ShoppingCart\src\main" />
@@ -132,7 +136,10 @@
       </method>
     </configuration>
     <configuration name="WarehouseApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="warehouse.WarehouseApplication" />
+      <module name="server.warehouse-project.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="warehouse.*" />
@@ -162,14 +169,60 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="server:order-project [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/order-project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="server:user-project [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/user-project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.WarehouseApplication" />
       <item itemvalue="Application.ShoppingCartApplication" />
+      <item itemvalue="Gradle.server:order-project [build]" />
+      <item itemvalue="Gradle.server:user-project [build]" />
       <item itemvalue="Gradle.ShoppingCart" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WarehouseApplication" />
+        <item itemvalue="Gradle.server:user-project [build]" />
+        <item itemvalue="Gradle.server:order-project [build]" />
         <item itemvalue="Application.ShoppingCartApplication" />
         <item itemvalue="Gradle.ShoppingCart" />
       </list>

@@ -1,7 +1,7 @@
 CREATE TABLE reviews(
     id bigserial primary key,
     rating int,
-    description character VARYING NOT NULL,
+    description VARCHAR,
     date VARCHAR,
     garment_id bigint
 );

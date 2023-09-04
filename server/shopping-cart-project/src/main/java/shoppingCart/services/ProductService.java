@@ -24,9 +24,8 @@ public class ProductService {
                 .map(product -> new ProductDTO(product.getId(),
                         product.getProductId(),
                         product.getQuantity(),
-                        product.getName(), product.getType(), product.getPrice(),
-                        product.getColour(), product.isPremiumDelivery(), product.getIdentity(),
-                        product.getSize(), product.getShopping_cart().getId()))
+                        product.getName(), product.getType(),
+                        product.getShopping_cart().getId()))
                 .collect(Collectors.toList());
     }
 }

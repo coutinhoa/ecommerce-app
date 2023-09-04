@@ -96,7 +96,7 @@ export const Rating = ({
     event.preventDefault();
 
     //python: fetch(`http://localhost:8000/api/garments/${params.id}/reviews`
-    fetch(`http://localhost:8084/api/garments/${params.id}/reviews`, {
+    fetch(`http://localhost:8084/api/v1/garments/${params.id}/reviews`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -105,7 +105,7 @@ export const Rating = ({
         rating: reviewRating,
         description: reviewDescription,
         date: new Date().toLocaleDateString(),
-        garmentId: item.id,
+        garment_id: item.id,
       }),
     }).then(() => {
       //we are setting the rating and review to their initial state so that we

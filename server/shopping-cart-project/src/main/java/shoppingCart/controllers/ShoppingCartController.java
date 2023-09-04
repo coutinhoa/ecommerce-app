@@ -15,7 +15,7 @@ import java.util.List;
 @Transactional
 @RestController
 @RequestMapping("/shopping-cart")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
 
@@ -24,16 +24,28 @@ public class ShoppingCartController {
     }
 
 
-    @GetMapping
-    public ResponseEntity<List<ShoppingCart>> getCart(@RequestParam(name = "name", required = false, defaultValue = "") String name) {
-        List<ShoppingCart> shoppingCart = shoppingCartService.getAll(name);
+    @GetMapping //postman working
+    public ResponseEntity<List<ShoppingCart>> getCart() {
+        List<ShoppingCart> shoppingCart = shoppingCartService.getAll();
         return ResponseEntity.ok(shoppingCart);
     }
 
-    @PostMapping("/purchase")
-    public ResponseEntity<ShoppingCart> makePurchase(@RequestBody ShoppingCartDTO shoppingCart) {
-        ShoppingCart createdCart = shoppingCartService.createCartWithProducts(shoppingCart);
+    @PostMapping //postman working
+    public ResponseEntity<ShoppingCart> addItemToCart(@RequestBody ShoppingCartDTO shoppingCart) {
+        ShoppingCart createdCart = shoppingCartService.addProducts(shoppingCart);
         return new ResponseEntity<>(createdCart, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+        //postman working
+    void deleteById(@PathVariable Long id) {
+        shoppingCartService.deleteItem(id);
+    }
+
+   /* @GetMapping("/purchase")
+    public ResponseEntity<List<ShoppingCart>> makePurchase() {
+        List<ShoppingCart> createdCart = shoppingCartService.purchaseOrder();
+        return ResponseEntity.ok(createdCart);
+    }*/
 
 }
