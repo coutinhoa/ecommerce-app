@@ -42,6 +42,7 @@ export const Body = ({ shoppingCart, filteredItems }) => {
           {filteredItems.length === 0 && <span>Item not found</span>}
           {filteredItems.map(
             (element) => {
+              console.log(element);
               return (
                 <ItemInfo
                   key={element.id}

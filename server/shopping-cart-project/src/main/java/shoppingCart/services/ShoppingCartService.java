@@ -1,5 +1,6 @@
 package shoppingCart.services;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -7,16 +8,22 @@ import shoppingCart.dto.ProductDTO;
 import shoppingCart.dto.ShoppingCartDTO;
 import shoppingCart.entities.Product;
 import shoppingCart.entities.ShoppingCart;
+import shoppingCart.repositories.ProductRepository;
 import shoppingCart.repositories.ShoppingCartRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartService {
+
+    @Autowired
     private final ShoppingCartRepository shoppingCartRepository;
     private final KafkaTemplate<String, ShoppingCart> kafkaTemplate;
     private final ProductQuantityService productQuantityService;
+    @Autowired
+    private ProductRepository productRepository;
 
     @Autowired
     ShoppingCartService(KafkaTemplate<String, ShoppingCart> kafkaTemplate,
@@ -31,23 +38,40 @@ public class ShoppingCartService {
         return shoppingCartRepository.findAll();
     }
 
-    public ShoppingCart addProducts(ShoppingCartDTO orderRequest) {
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setUserId(1L);
+    public ShoppingCartDTO createShoppingCart(ShoppingCartDTO shoppingCart) {
+        // create the shopping cart
+        ShoppingCart newShoppingCart = shoppingCartRepository.save(shoppingCart.buildShoppingCart());
 
-        List<Product> products = new ArrayList<>();
-        for (ProductDTO productDTO : orderRequest.getProducts()) {
-            Product product = new Product();
-            product.setQuantity(1);
-            product.setName(productDTO.getName());
-            product.setType(productDTO.getType());
-            product.setProductId(productDTO.getProductId());
-            product.setShopping_cart(shoppingCart);
-            products.add(product);
+//        boolean productExistsInCart = shoppingCart.getProducts().stream()
+//                .anyMatch(cartProduct -> cartProduct.getId().equals(productDTO.getId()));
+//
+//        if (productExistsInCart) {
+//            for (ProductDTO cartProduct : shoppingCart.getProducts()) {
+//                if (cartProduct.getId().equals(productDTO.getId())) {
+//                    cartProduct.setQuantity(cartProduct.getQuantity() + 1);
+//                    System.out.println("exists");
+//                    break;
+//                }
+//            }
+//        } else {
+        // create the relationships between the shopping cart and the products
+        List<Product> productsList = new ArrayList();
+        for (ProductDTO product : shoppingCart.getProducts()) {
+            Product newProduct = product.buildProduct();
+            newProduct.setShopping_cart(newShoppingCart);
+            productsList.add(newProduct);
         }
-        shoppingCart.setProducts(products);
 
-        return shoppingCartRepository.save(shoppingCart);
+        productRepository.saveAll(productsList);
+
+        ModelMapper modelMapper = new ModelMapper();
+        ShoppingCartDTO result = modelMapper.map(newShoppingCart, ShoppingCartDTO.class);
+        result.setProducts(productsList.stream()
+                .map(p -> modelMapper.map(p, ProductDTO.class))
+                .collect(Collectors.toList()));
+        return modelMapper.map(result, ShoppingCartDTO.class);
+        //}
+
     }
 
     public void deleteItem(Long id) {

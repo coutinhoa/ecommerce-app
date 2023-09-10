@@ -2,7 +2,6 @@ package shoppingCart.controllers;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shoppingCart.dto.ShoppingCartDTO;
@@ -31,9 +30,8 @@ public class ShoppingCartController {
     }
 
     @PostMapping //postman working
-    public ResponseEntity<ShoppingCart> addItemToCart(@RequestBody ShoppingCartDTO shoppingCart) {
-        ShoppingCart createdCart = shoppingCartService.addProducts(shoppingCart);
-        return new ResponseEntity<>(createdCart, HttpStatus.CREATED);
+    public ShoppingCartDTO createShoppingCart(@RequestBody ShoppingCartDTO shoppingCart) {
+        return shoppingCartService.createShoppingCart(shoppingCart);
     }
 
     @DeleteMapping("/{id}")

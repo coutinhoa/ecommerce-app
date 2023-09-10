@@ -40,6 +40,7 @@ export const App = () => {
     })
       .then((response) => response.json())
       .then((response) => setItem(response));
+    console.log(item);
   };
 
   const updateItemQuantity = (item, event) => {

@@ -33,9 +33,7 @@ public class ReviewsService {
     public void createReview(ReviewDTO newReview, Long productId) {
         WarehouseProduct warehouseProduct = productRepository.findById(productId)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found"));
-
-        System.out.println(newReview.getRating());
-        System.out.println(newReview.getDescription());
+        
         Review review = new Review();
         review.setDescription(newReview.getDescription());
         review.setRating(newReview.getRating());
