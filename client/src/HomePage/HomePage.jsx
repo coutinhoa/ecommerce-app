@@ -8,7 +8,12 @@ import { useSearchParams } from "react-router-dom";
 
 const PAGE_SIZE = 9; //constants can be outside the component
 
-const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
+const HomePage = ({
+  shoppingCart,
+  filterByIdentity,
+  handleSearchSubmit,
+  cartQuantity,
+}) => {
   const [items, setItems] = useState([]); //this is the original collection
   const [currentPage, setCurrentPage] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -58,11 +63,13 @@ const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
         shoppingCart={shoppingCart}
         filterByIdentity={filterByIdentity}
         handleSearchSubmit={handleSearchSubmit}
+        articlesQuantity={cartQuantity}
       />
       <Body
         filteredItems={filteredItems}
         shoppingCart={shoppingCart}
         filterByIdentity={filterByIdentity}
+        articlesQuantity={cartQuantity}
       />
       <div className="previous-next-page">
         <div className="move-previous-page">

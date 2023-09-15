@@ -131,7 +131,7 @@ export const Rating = ({
   };
 
   const isItemInTheCart = (item) => {
-    return shoppingCart.includes(item);
+    return shoppingCart.products.includes(item);
   };
 
   return (

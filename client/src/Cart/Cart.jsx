@@ -6,8 +6,13 @@ import mastercardLogo from "./../images/Mastercard_logo.svg";
 import visaLogo from "./../images/Visa_logo.svg";
 import { Link } from "react-router-dom";
 
-export const Cart = ({ items, updateItemQuantity, removeItemFromList }) => {
-  const articlesQuantity = amountArticles(items);
+export const Cart = ({
+  items,
+  articlesQuantity,
+  updateItemQuantity,
+  removeItemFromList,
+}) => {
+  //const articlesQuantity = amountArticles(items);
 
   const getDeliveryTime = () => {
     var initDate = new Date();
@@ -25,7 +30,7 @@ export const Cart = ({ items, updateItemQuantity, removeItemFromList }) => {
         <h2>Warenkorb ({articlesQuantity} Artikel)</h2>
         <h5>Versandt durch ZALANDO</h5>
         <ul>
-          {items.map((item) => {
+          {items.products.map((item) => {
             return (
               <CartItem
                 key={item.name}

@@ -12,7 +12,7 @@ export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
-  const [item, setItem] = useState();
+  //const [item, setItem] = useState();
   /**
    * Adds an item to the shopping cart.
    * If the item already exists, increments the quantity of the item by 1.
@@ -34,22 +34,33 @@ export const App = () => {
     }
   };*/
 
-  const addItemToShoppingCart = (item) => {
-    fetch(`http://localhost:8081/api/v1/shopping-cart`, {
-      method: "POST",
+  const addItemToShoppingCart = () => {};
+
+  const getShoppingCart = () => {
+    const userId = 5;
+    fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
+      method: "GET",
     })
       .then((response) => response.json())
-      .then((response) => setItem(response));
-    console.log(item);
+      .then((response) => setShoppingCart(response));
   };
 
-  const updateItemQuantity = (item, event) => {
+  useEffect(() => {
+    getShoppingCart();
+  }, []);
+
+  console.log(shoppingCart);
+
+  const cartQuantity = shoppingCart?.products?.length;
+
+  /*const updateItemQuantity = (item, event) => {
     //select a quantity and save it in the shopping cart
 
     item.quantity = parseInt(item.quantity + event.target.value);
     console.log(item);
     //setShoppingCart(cart);
-  };
+  };*/
+  const updateItemQuantity = () => {};
 
   const filterByIdentity = (identity) => {
     const newItems = items.filter((element) => element.identity === identity);
@@ -113,6 +124,7 @@ export const App = () => {
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
                 filteredItems={filteredItems}
+                cartQuantity={cartQuantity}
               />
             }
           />
@@ -123,6 +135,7 @@ export const App = () => {
                 shoppingCart={shoppingCart}
                 updateItemQuantity={updateItemQuantity}
                 removeItemFromList={removeItem}
+                cartQuantity={cartQuantity}
               />
             }
           />
@@ -135,6 +148,7 @@ export const App = () => {
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
                 addItemToShoppingCart={addItemToShoppingCart}
+                cartQuantity={cartQuantity}
               />
             }
           />

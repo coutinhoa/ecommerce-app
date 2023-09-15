@@ -29,15 +29,21 @@ public class ShoppingCartController {
         return ResponseEntity.ok(shoppingCart);
     }
 
-    @PostMapping //postman working
-    public ShoppingCartDTO createShoppingCart(@RequestBody ShoppingCartDTO shoppingCart) {
-        return shoppingCartService.createShoppingCart(shoppingCart);
+    @PostMapping("/{userId}") //postman working
+    public ShoppingCartDTO createShoppingCart(@PathVariable Long userId, @RequestBody ShoppingCartDTO shoppingCart) {
+        return shoppingCartService.createShoppingCart(userId, shoppingCart);
     }
 
     @DeleteMapping("/{id}")
         //postman working
     void deleteById(@PathVariable Long id) {
         shoppingCartService.deleteItem(id);
+    }
+
+    @GetMapping("/{userId}") //postman working
+    public ResponseEntity<ShoppingCart> getCartByUser(@PathVariable Long userId) {
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingByUserId(userId);
+        return ResponseEntity.ok(shoppingCart);
     }
 
    /* @GetMapping("/purchase")

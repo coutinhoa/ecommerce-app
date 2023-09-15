@@ -3,6 +3,7 @@ import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
 
 export const PriceInfo = ({ items }) => {
+  //const price = priceArticles(items);
   const price = priceArticles(items);
 
   const delivery = items.length === 0 ? 0 : 3;

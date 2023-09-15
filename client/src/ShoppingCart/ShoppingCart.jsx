@@ -8,6 +8,7 @@ function ShoppingCart({
   shoppingCart,
   updateItemQuantity,
   removeItemFromList,
+  cartQuantity,
 }) {
   return (
     <div className="ShoppingCart">
@@ -19,6 +20,7 @@ function ShoppingCart({
       <div className="separate-page">
         <Cart
           items={shoppingCart}
+          articlesQuantity={cartQuantity}
           updateItemQuantity={updateItemQuantity}
           removeItemFromList={removeItemFromList}
         />

@@ -8,9 +8,9 @@ export const Header = ({
   shoppingCart,
   filterByIdentity,
   handleSearchSubmit,
+  articlesQuantity,
 }) => {
-  const articlesQuantity = amountArticles(shoppingCart);
-  //let articlesQuantity = 0;
+  //const articlesQuantity = amountArticles(shoppingCart);
 
   //curly brackets need return if we want the function to return smth
 

@@ -38,44 +38,54 @@ public class ShoppingCartService {
         return shoppingCartRepository.findAll();
     }
 
-    public ShoppingCartDTO createShoppingCart(ShoppingCartDTO shoppingCart) {
-        // create the shopping cart
-        ShoppingCart newShoppingCart = shoppingCartRepository.save(shoppingCart.buildShoppingCart());
-
-//        boolean productExistsInCart = shoppingCart.getProducts().stream()
-//                .anyMatch(cartProduct -> cartProduct.getId().equals(productDTO.getId()));
-//
-//        if (productExistsInCart) {
-//            for (ProductDTO cartProduct : shoppingCart.getProducts()) {
-//                if (cartProduct.getId().equals(productDTO.getId())) {
-//                    cartProduct.setQuantity(cartProduct.getQuantity() + 1);
-//                    System.out.println("exists");
-//                    break;
-//                }
-//            }
-//        } else {
-        // create the relationships between the shopping cart and the products
+    public ShoppingCartDTO createShoppingCart(Long userId, ShoppingCartDTO shoppingCart) {
         List<Product> productsList = new ArrayList();
-        for (ProductDTO product : shoppingCart.getProducts()) {
-            Product newProduct = product.buildProduct();
-            newProduct.setShopping_cart(newShoppingCart);
-            productsList.add(newProduct);
+
+        var foundShoppingCart = shoppingCartRepository.findByUserId(userId);
+
+        if (foundShoppingCart == null) {
+            ShoppingCart newShoppingCart = shoppingCartRepository.save(shoppingCart.buildShoppingCart());
+
+            System.out.println("cart does not exist");
+
+            for (ProductDTO product : shoppingCart.getProducts()) {
+                Product newProduct = product.buildProduct();
+                newProduct.setShopping_cart(newShoppingCart);
+                productsList.add(newProduct);
+            }
+            productRepository.saveAll(productsList);
+
+            ModelMapper modelMapper = new ModelMapper();
+            ShoppingCartDTO result = modelMapper.map(newShoppingCart, ShoppingCartDTO.class);
+            result.setProducts(productsList.stream()
+                    .map(p -> modelMapper.map(p, ProductDTO.class))
+                    .collect(Collectors.toList()));
+
+            return modelMapper.map(result, ShoppingCartDTO.class);
+
+        } else {
+            System.out.println("cart already exists");
+
+            for (ProductDTO product : shoppingCart.getProducts()) {
+                System.out.println("for");
+                Product newProduct = product.buildProduct();
+                newProduct.setShopping_cart(foundShoppingCart);
+                productsList.add(newProduct);
+                System.out.println("newProduct");
+                productRepository.saveAll(productsList);
+                System.out.println("saved");
+            }
         }
 
-        productRepository.saveAll(productsList);
-
-        ModelMapper modelMapper = new ModelMapper();
-        ShoppingCartDTO result = modelMapper.map(newShoppingCart, ShoppingCartDTO.class);
-        result.setProducts(productsList.stream()
-                .map(p -> modelMapper.map(p, ProductDTO.class))
-                .collect(Collectors.toList()));
-        return modelMapper.map(result, ShoppingCartDTO.class);
-        //}
-
+        return shoppingCart;
     }
 
     public void deleteItem(Long id) {
         shoppingCartRepository.deleteById(id);
+    }
+
+    public ShoppingCart getShoppingByUserId(Long userId) {
+        return shoppingCartRepository.findByUserId(userId);
     }
 
     public void purchaseOrder() {

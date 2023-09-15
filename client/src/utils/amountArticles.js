@@ -1,5 +1,5 @@
 export const amountArticles = (article) => {
-  if (article.length === 0) {
+  /* if (article.length === 0) {
     return 0;
   }
 
@@ -11,5 +11,5 @@ export const amountArticles = (article) => {
     result += parseFloat(article[i].quantity);
   }
   console.log(result);
-  return result;
+  return result;*/
 };

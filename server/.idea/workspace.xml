@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/Cart/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Cart/Cart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/HomePage/Body/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/Body/Body.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/HomePage/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/ItemPage/Rating/Rating.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ItemPage/Rating/Rating.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/PriceInfo/PriceInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/PriceInfo/PriceInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/PriceInfo/utils/priceArticles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/PriceInfo/utils/priceArticles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/ShoppingCart/ShoppingCart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ShoppingCart/ShoppingCart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/utils/amountArticles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/utils/amountArticles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
