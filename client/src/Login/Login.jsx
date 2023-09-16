@@ -82,9 +82,15 @@ function Login() {
                     </span>
                   </div>
                 </div>
-                <button type="submit" className="submit-button">
-                  Anmelden
-                </button>
+                <Link
+                  className="cart-link"
+                  style={{ textDecoration: "none", color: "black" }}
+                  to={`/admin-view`}
+                >
+                  <button type="submit" className="submit-button">
+                    Anmelden
+                  </button>
+                </Link>
               </div>
             </form>
             <div className="forget-pass">

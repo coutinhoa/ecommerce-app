@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/Cart/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Cart/Cart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/HomePage/Body/Body.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/Body/Body.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/HomePage/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/HomePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/ItemPage/Rating/Rating.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ItemPage/Rating/Rating.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/Cart/CartItem/CartItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/Cart/CartItem/CartItem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/PriceInfo/PriceInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/PriceInfo/PriceInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/PriceInfo/utils/priceArticles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/PriceInfo/utils/priceArticles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/ShoppingCart/ShoppingCart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ShoppingCart/ShoppingCart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/utils/amountArticles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/utils/amountArticles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,19 +88,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/couti/Desktop/ecommerce-app/docker-compose.yml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "code.cleanup.on.save": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-18",
+    "last_opened_file_path": "C:/Users/couti/Desktop/java/contact-book-docker/spring-boot",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\couti\Desktop\ecommerce-app\server\order-project" />

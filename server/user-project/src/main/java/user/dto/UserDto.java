@@ -1,13 +1,30 @@
 package user.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
+import java.io.Serializable;
 
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-public class UserDto extends UserCreateDto{
+@Data
+@Setter
+@Getter
+@RequiredArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+public class UserDTO implements Serializable {
 
     private Long id;
+
+    @NonNull
+    private String name;
+
+    @NonNull
+    private String password;
+
+    @NonNull
+    private String phone;
+
+    @NonNull
+    private String email;
 
 }

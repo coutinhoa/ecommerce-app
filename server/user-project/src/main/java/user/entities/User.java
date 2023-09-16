@@ -1,14 +1,17 @@
 package user.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.ToString;
 
 import java.io.Serializable;
 
 @Data
 @ToString
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 @NoArgsConstructor
 public class User implements Serializable {
 
@@ -19,4 +22,18 @@ public class User implements Serializable {
     @Column(name = "name", nullable = false)
     @NonNull
     private String name;
+
+    @Column(name = "password", nullable = false)
+    @NonNull
+    private String password;
+
+    @Column(name = "phone", nullable = false)
+    @NonNull
+    private String phone;
+
+    @Column(name = "email", nullable = false)
+    @NonNull
+    private String email;
+
+
 }

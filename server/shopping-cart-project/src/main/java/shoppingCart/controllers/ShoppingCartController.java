@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 @RestController
 @RequestMapping("/shopping-cart")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
 
@@ -32,12 +32,6 @@ public class ShoppingCartController {
     @PostMapping("/{userId}") //postman working
     public ShoppingCartDTO createShoppingCart(@PathVariable Long userId, @RequestBody ShoppingCartDTO shoppingCart) {
         return shoppingCartService.createShoppingCart(userId, shoppingCart);
-    }
-
-    @DeleteMapping("/{id}")
-        //postman working
-    void deleteById(@PathVariable Long id) {
-        shoppingCartService.deleteItem(id);
     }
 
     @GetMapping("/{userId}") //postman working

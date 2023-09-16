@@ -28,6 +28,11 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public List<Order> getOrderByUserId(Long userId) {
+        return orderRepository.findByUserId(userId);
+    }
+
+
     public Order getOrder(Long id) {
         System.out.println("find by id");
         return orderRepository.findById(id).get();

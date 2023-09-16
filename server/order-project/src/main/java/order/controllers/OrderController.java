@@ -32,12 +32,19 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Order>> getUserOrder(@PathVariable Long userId) {
+        List<Order> orders = orderService.getOrderByUserId(userId);
+        return ResponseEntity.ok(orders);
+    }
+
+
+    /*@GetMapping("/{id}")
     Order getProduct(@PathVariable Long id) {
         System.out.println("get id");
 
         return orderService.getOrder(id);
-    }
+    }*/
 
     //deletes all orders of user
     /*@DeleteMapping("/{userId}")

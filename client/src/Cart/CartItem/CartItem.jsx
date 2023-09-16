@@ -18,11 +18,11 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
   return (
     <li>
       <div className="info-container">
-        <div className="lines">
+        {/* <div className="lines">
           <Link to={`/item-details/${item.id}`}>
             <img src={item.pictures[0].url} alt="item" className="image" />
           </Link>
-        </div>
+        </div>*/}
         <div className="item-details">
           <div>Name: {item.name}</div>
           <div className="item-infos-in-cart">Type: {item.type}</div>
@@ -36,14 +36,14 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
             ) : null}
             {/*or {item.premiumDelivery && <div>Premium-Lieferung</div>} */}
           </div>
-          <div className="cart-size-container">
+          {/* <div className="cart-size-container">
             <div>Size:</div>
             <select className="cart-size-select" value={item.size}>
               {item.sizes.map((i) => {
                 return <option key={i.id}>{i.size}</option>;
               })}
             </select>
-          </div>
+          </div> */}
         </div>
         <div className="item-quantity">
           <span className="quantity-label">Quantity:</span>

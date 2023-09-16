@@ -1,0 +1,74 @@
+.Orders {
+  text-align: center;
+  align-content: center;
+}
+
+table,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  background-color: rgba(255, 157, 0, 0.192);
+}
+
+tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, 0.043);
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.title {
+  margin-left: 42%;
+  margin-bottom: 30px;
+}
+
+.contacts {
+  align-content: center;
+  margin: auto;
+  justify-content: center;
+}
+
+.columns {
+  align-items: center;
+  padding: 10px;
+}
+
+.remove-cursor {
+  cursor: pointer;
+  text-decoration: none;
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.remove-cursor:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.input {
+  border-style: hidden;
+}
+
+.input:active {
+  border-style: none;
+}
+
+.moving-pages {
+  margin: 10px;
+}
+
+.button-bottom {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

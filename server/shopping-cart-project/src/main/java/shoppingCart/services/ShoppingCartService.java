@@ -80,10 +80,6 @@ public class ShoppingCartService {
         return shoppingCart;
     }
 
-    public void deleteItem(Long id) {
-        shoppingCartRepository.deleteById(id);
-    }
-
     public ShoppingCart getShoppingByUserId(Long userId) {
         return shoppingCartRepository.findByUserId(userId);
     }

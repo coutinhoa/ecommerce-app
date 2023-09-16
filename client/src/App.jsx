@@ -7,6 +7,9 @@ import Login from "./Login/Login";
 import ItemPage from "../src/ItemPage/ItemPage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Users from "./Admin/Users/Users";
+import Orders from "./Orders/Orders";
+import Inventory from "./Admin/Inventory/Inventory";
 
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
@@ -93,13 +96,14 @@ export const App = () => {
     setShoppingCart(deleteItem);
   };*/
 
-  const removeItem = (id) => {
-    fetch(`http://localhost:8081/api/v1/shopping-cart/${id}`, {
+  const removeItem = (item) => {
+    const userId = 5;
+    fetch(`http://localhost:8081/api/v1/products/${item}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
       .then(() => {
-        fetch(`http://localhost:8081/api/v1/shopping-cart`, {
+        fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
           method: "GET",
         });
         toast.warning("You deleted an item", {
@@ -107,6 +111,10 @@ export const App = () => {
         });
       });
   };
+
+  useEffect(() => {
+    removeItem();
+  }, []);
 
   return (
     <>
@@ -152,6 +160,9 @@ export const App = () => {
               />
             }
           />
+          <Route path="/admin-view" element={<Users />} />
+          <Route path="/my-orders" element={<Orders />} />
+          <Route path="/inventory" element={<Inventory />} />
         </Routes>
       </BrowserRouter>
     </>

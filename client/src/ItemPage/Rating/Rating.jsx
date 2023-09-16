@@ -89,10 +89,7 @@ export const Rating = ({
   //button prints the value on the console, but is the input that modifies the variable
   //this fucntion prints the new description
   //when we submit the form we need to call the submitReview function and we are using a form so that we only submit when all the requirements(rating and description) are filled
-  const submitReview = (event) => {
-    //console.log(reviewDescription); // this log shows the description only when we click the submit
-    //console.log(new Date());
-    //console.log(reviewRating);
+  /*const submitReview = (event) => {
     event.preventDefault();
 
     //python: fetch(`http://localhost:8000/api/garments/${params.id}/reviews`
@@ -115,6 +112,26 @@ export const Rating = ({
       // the inout needs the attribute value to be reviewDescription
       //cause without the attribute value(on the input) the input can't clear it
       //now with the value the input is controlled
+      fetchItem();
+    });
+  };*/
+
+  const submitReview = (event) => {
+    event.preventDefault();
+    fetch(`http://localhost:8084/api/v1/garments/${params.id}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        rating: reviewRating,
+        description: reviewDescription,
+        date: new Date().toLocaleDateString(),
+        garment_id: item.id,
+      }),
+    }).then(() => {
+      setReviewRating();
+      setReviewDescription("");
       fetchItem();
     });
   };

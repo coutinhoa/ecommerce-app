@@ -15,8 +15,12 @@ public class ProductService {
     ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
+    
     public List<Product> getAll() {
         return productRepository.findAll();
+    }
+
+    public void deleteItemFromCart(Long id) {
+        productRepository.deleteById(id);
     }
 }

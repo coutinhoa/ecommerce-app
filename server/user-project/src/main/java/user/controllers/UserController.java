@@ -1,13 +1,13 @@
 package user.controllers;
 
-import org.springframework.kafka.core.KafkaTemplate;
-import user.entities.User;
-import user.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+import user.dto.UserDTO;
+import user.entities.User;
+import user.services.UserService;
 
 import java.util.List;
 
@@ -36,6 +36,12 @@ public class UserController {
         kafkaTemplate.send("user-deleted", id);
         log.info("Message sent");
         userService.deleteUser(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<UserDTO> loginUser(@RequestBody UserDTO userCredentials) {
+        UserDTO userlogin = userService.login(userCredentials);
+        return new ResponseEntity<>(userlogin, HttpStatus.OK);
     }
 
 }

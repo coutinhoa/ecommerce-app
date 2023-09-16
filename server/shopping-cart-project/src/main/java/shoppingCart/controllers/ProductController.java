@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 @RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ProductController {
     private final ProductService productService;
 
@@ -27,5 +27,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> getCart() {
         List<Product> products = productService.getAll();
         return ResponseEntity.ok(products);
+    }
+
+    @DeleteMapping("/{id}")
+    void deleteById(@PathVariable Long id) {
+        productService.deleteItemFromCart(id);
     }
 }

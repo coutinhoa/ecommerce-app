@@ -69,9 +69,19 @@ export const Header = ({
           <img src={zalandoLogo} className="logo" alt="logo" />
         </Link>
         <div className="icons-container">
-          <span className="icons">
-            De <i className="bi bi-globe"></i>
-          </span>
+          <Link
+            className="icons"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              cursor: "pointer",
+            }}
+            to={`/my-orders`}
+          >
+            <span>
+              My Orders <i class="bi bi-list-stars"></i>
+            </span>
+          </Link>
           <Link
             className="icons"
             style={{
