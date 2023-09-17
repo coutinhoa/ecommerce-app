@@ -6,6 +6,8 @@ export const ItemPage = ({
   filterByIdentity,
   handleSearchSubmit,
   cartQuantity,
+  size,
+  setSize,
   addItemToShoppingCart,
 }) => {
   return (
@@ -17,8 +19,10 @@ export const ItemPage = ({
         articlesQuantity={cartQuantity}
       />
       <Rating
-        addItemToShoppingCart={addItemToShoppingCart}
         shoppingCart={shoppingCart}
+        size={size}
+        setSize={setSize}
+        addItemToShoppingCart={addItemToShoppingCart}
       />
     </>
   );

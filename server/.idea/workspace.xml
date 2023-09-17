@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/HomePage/HomePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/ItemPage/ItemPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ItemPage/ItemPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +93,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "code.cleanup.on.save": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-18",
-    "last_opened_file_path": "C:/Users/couti/Desktop/java/contact-book-docker/spring-boot",
+    "last_opened_file_path": "C:/Users/couti/Desktop/js/git_projects/zalando/java-server",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

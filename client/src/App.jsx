@@ -14,6 +14,7 @@ import Inventory from "./Admin/Inventory/Inventory";
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [size, setSize] = useState("");
 
   const getShoppingCart = () => {
     const userId = 5;
@@ -90,10 +91,52 @@ export const App = () => {
       setItems(searchedItems);
     }
   };
-  console.log(items);
 
-  const updateItemQuantity = () => {};
-  const addItemToShoppingCart = () => {};
+  const addItemToShoppingCart = (item) => {
+    const userId = 5;
+    fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: userId,
+        products: [
+          {
+            id: item.id,
+            quantity: 1,
+            name: item.name,
+            type: item.type,
+            price: item.price * item.quantity,
+            colour: item.colour,
+            premiumDelivery: item.premiumDelivery,
+            identity: item.identity,
+            size: size,
+          },
+        ],
+      }),
+    }).then(() => {
+      toast.success("Item added to Cart", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      console.log("after toast");
+      setShoppingCart();
+    });
+  };
+
+  const updateItemQuantity = (id, newQuantity) => {
+    fetch(`http://localhost:8081/api/v1/products/product/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        quantity: newQuantity,
+      }),
+    }).then(() => {
+      setShoppingCart();
+    });
+  };
 
   return (
     <>
@@ -135,9 +178,11 @@ export const App = () => {
                 shoppingCart={shoppingCart}
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
-                addItemToShoppingCart={addItemToShoppingCart}
                 cartQuantity={cartQuantity}
                 items={items}
+                size={size}
+                setSize={setSize}
+                addItemToShoppingCart={addItemToShoppingCart}
               />
             }
           />

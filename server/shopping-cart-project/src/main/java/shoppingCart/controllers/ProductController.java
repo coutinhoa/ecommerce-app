@@ -13,8 +13,8 @@ import java.util.List;
 @Slf4j
 @Transactional
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ProductController {
     private final ProductService productService;
 
@@ -32,5 +32,12 @@ public class ProductController {
     @DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id) {
         productService.deleteItemFromCart(id);
+    }
+
+
+    @PutMapping("/product/{id}")
+    public ResponseEntity<Product> replaceProduct(@RequestBody Product newProduct, @PathVariable Long id) {
+        Product product = productService.updateQuantityItemFromCart(newProduct, id).getBody();
+        return ResponseEntity.ok(product);
     }
 }

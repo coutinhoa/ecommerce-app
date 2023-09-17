@@ -6,14 +6,16 @@ import { Link } from "react-router-dom";
 export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
   const availableOptions = [1, 2, 3, 4, 5];
 
-  const handleChangeQuantity = (e) => {
-    console.log(e.target.value);
-    updateItemQuantity(item, e.target.value);
+  const handleChangeQuantity = (event, item) => {
+    const newQuantity = event.target.value;
+    console.log(newQuantity);
+    updateItemQuantity(item.id, newQuantity);
   };
 
   const handleRemoveItem = () => {
     removeItemFromList(item);
   };
+  console.log(item);
 
   return (
     <li>
@@ -26,7 +28,7 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
         <div className="item-details">
           <div>Name: {item.name}</div>
           <div className="item-infos-in-cart">Type: {item.type}</div>
-          <div className="item-infos-in-cart">Color: {item.color}</div>
+          <div className="item-infos-in-cart">Color: {item.colour}</div>
           <div className="item-infos-in-cart">
             {item.premiumDelivery ? (
               <>
@@ -39,8 +41,8 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
           {/* <div className="cart-size-container">
             <div>Size:</div>
             <select className="cart-size-select" value={item.size}>
-              {item.sizes.map((i) => {
-                return <option key={i.id}>{i.size}</option>;
+              {item.garmentSizes.map((i) => {
+                return <option key={i.id}>{i.size.size}</option>;
               })}
             </select>
           </div> */}

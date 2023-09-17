@@ -4,7 +4,12 @@ import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 import { getAverageRating } from "./utils/getAverageRating";
 
-export const Rating = ({ addItemToShoppingCart, shoppingCart }) => {
+export const Rating = ({
+  shoppingCart,
+  size,
+  setSize,
+  addItemToShoppingCart,
+}) => {
   const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
   const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
   const [changeImage, setChangeImage] = useState("");
@@ -20,8 +25,6 @@ export const Rating = ({ addItemToShoppingCart, shoppingCart }) => {
   useEffect(() => {
     fetchItem();
   }, []);
-
-  console.log("item:" + item);
 
   useEffect(() => {
     //called when the component renders the 1st time and whenever item changes
@@ -116,6 +119,11 @@ export const Rating = ({ addItemToShoppingCart, shoppingCart }) => {
     setReviewRating(number);
   };
 
+  const handleSizeChange = (event) => {
+    //console.log(event.target.value);
+    setSize(event.target.value);
+  };
+
   const handleMouseOver = (event) => {
     event.preventDefault();
     const pictureChange = event.currentTarget.src;
@@ -125,8 +133,6 @@ export const Rating = ({ addItemToShoppingCart, shoppingCart }) => {
   const isItemInTheCart = (item) => {
     return shoppingCart.products.includes(item);
   };
-
-  console.log(item);
 
   return (
     <div>
@@ -181,21 +187,26 @@ export const Rating = ({ addItemToShoppingCart, shoppingCart }) => {
             </div>
             <div className="stars-average">{renderStars()}</div>
             <div className="size-cart-container">
-              {/*<div className="border-select-size">
-                <select className="select-size-container" defaultValue={""}>
+              <div className="border-select-size">
+                <select
+                  className="select-size-container"
+                  defaultValue={""}
+                  onChange={handleSizeChange}
+                >
                   <option value="" disabled hidden>
                     Bitte Größe wählen
                   </option>
-                  {item.sizes.map((i) => {
-                    return <option key={i.id}>{i.size}</option>;
+                  {item.garmentSizes.map((i) => {
+                    return <option key={i.id}>{i.size.size}</option>;
                   })}
                 </select>
-              </div>*/}
+              </div>
               <div className="add-to-cart-container">
                 <div
-                  className={`add-to-cart-button ${
+                  className="add-to-cart-button"
+                  /*className={`add-to-cart-button ${
                     isItemInTheCart(item) ? "green-background" : ""
-                  }`}
+                  }`}*/
                   onClick={() => addItemToShoppingCart(item)}
                 >
                   In den Warenkorb

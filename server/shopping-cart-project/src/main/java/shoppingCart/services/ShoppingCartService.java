@@ -46,8 +46,6 @@ public class ShoppingCartService {
         if (foundShoppingCart == null) {
             ShoppingCart newShoppingCart = shoppingCartRepository.save(shoppingCart.buildShoppingCart());
 
-            System.out.println("cart does not exist");
-
             for (ProductDTO product : shoppingCart.getProducts()) {
                 Product newProduct = product.buildProduct();
                 newProduct.setShopping_cart(newShoppingCart);
@@ -64,16 +62,11 @@ public class ShoppingCartService {
             return modelMapper.map(result, ShoppingCartDTO.class);
 
         } else {
-            System.out.println("cart already exists");
-
             for (ProductDTO product : shoppingCart.getProducts()) {
-                System.out.println("for");
                 Product newProduct = product.buildProduct();
                 newProduct.setShopping_cart(foundShoppingCart);
                 productsList.add(newProduct);
-                System.out.println("newProduct");
                 productRepository.saveAll(productsList);
-                System.out.println("saved");
             }
         }
 
