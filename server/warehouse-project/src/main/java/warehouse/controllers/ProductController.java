@@ -28,11 +28,14 @@ public class ProductController {
         return ResponseEntity.ok(orders);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/product/{id}")
     WarehouseProduct getProduct(@PathVariable Long id) {
-        System.out.println("get id");
+        return service.getProduct(id);
+    }
 
-        return service.getOrder(id);
+    @GetMapping("/{identity}")
+    List<WarehouseProduct> getProductsByCategory(@PathVariable String identity) {
+        return service.getProducts(identity);
     }
 
     /*@GetMapping

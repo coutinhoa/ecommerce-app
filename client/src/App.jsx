@@ -14,30 +14,6 @@ import Inventory from "./Admin/Inventory/Inventory";
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
-  //const [item, setItem] = useState();
-  /**
-   * Adds an item to the shopping cart.
-   * If the item already exists, increments the quantity of the item by 1.
-   * else adds to shopping cart.
-   * @param item
-   */
-  /*const addItemToShoppingCart = (item) => {
-    const cartItem = shoppingCart.find((i) => i.id === item.id);
-
-    if (cartItem) {
-      cartItem.quantity = cartItem.quantity + 1;
-      const updatedCart = shoppingCart.map((i) =>
-        i.id === cartItem.id ? cartItem : i
-      );
-      setShoppingCart(updatedCart);
-    } else {
-      const newShoppingCartItem = { ...item, quantity: 1 };
-      setShoppingCart([...shoppingCart, newShoppingCartItem]);
-    }
-  };*/
-
-  const addItemToShoppingCart = () => {};
 
   const getShoppingCart = () => {
     const userId = 5;
@@ -52,49 +28,33 @@ export const App = () => {
     getShoppingCart();
   }, []);
 
-  console.log(shoppingCart);
-
   const cartQuantity = shoppingCart?.products?.length;
 
-  /*const updateItemQuantity = (item, event) => {
-    //select a quantity and save it in the shopping cart
-
-    item.quantity = parseInt(item.quantity + event.target.value);
-    console.log(item);
-    //setShoppingCart(cart);
-  };*/
-  const updateItemQuantity = () => {};
-
   const filterByIdentity = (identity) => {
-    const newItems = items.filter((element) => element.identity === identity);
-    setFilteredItems(newItems);
+    fetch(`http://localhost:8084/api/v1/warehouse/${identity}`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setItems(response);
+      });
   };
 
-  const handleSearchSubmit = (specification) => {
-    if (specification === "") {
-      console.log("i am empty");
-      setFilteredItems(items);
-    } else {
-      const searchedItems = items.filter(
-        (element) =>
-          element.color.toLowerCase() === specification ||
-          element.name.toLowerCase() === specification ||
-          element.type.toLowerCase() === specification
-      );
+  useEffect(() => {
+    filterByIdentity();
+  }, []);
 
-      setFilteredItems(searchedItems);
-    }
+  const fetchClothes = () => {
+    fetch(`http://localhost:8084/api/v1/warehouse`)
+      .then((response) => response.json())
+      .then((response) => {
+        setItems(response);
+      });
   };
 
-  //console.log(filteredItems);
-
-  // set up cart so it has all the elements zou want, set Shopping Cart as the fullz readz cart, setState only updates when the next render is executed
-  // if itemAdded starts at false, whats the value of added, setItemAdded(true); const added = itemAdded; //its false until the next render, so onlz after we leave the current function does the value get updated
-
-  /*const removeItem = (item) => {
-    const deleteItem = shoppingCart.filter((i) => i !== item);
-    setShoppingCart(deleteItem);
-  };*/
+  useEffect(() => {
+    fetchClothes();
+  }, []);
 
   const removeItem = (item) => {
     const userId = 5;
@@ -116,6 +76,10 @@ export const App = () => {
     removeItem();
   }, []);
 
+  const handleSearchSubmit = (specification) => {};
+  const updateItemQuantity = () => {};
+  const addItemToShoppingCart = () => {};
+
   return (
     <>
       <header className="header-one">
@@ -131,8 +95,9 @@ export const App = () => {
                 shoppingCart={shoppingCart}
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
-                filteredItems={filteredItems}
+                items={items}
                 cartQuantity={cartQuantity}
+                fetchClothes={fetchClothes}
               />
             }
           />
@@ -169,3 +134,19 @@ export const App = () => {
   );
 };
 export default App;
+
+/*const handleSearchSubmit = (specification) => {
+  if (specification === "") {
+    console.log("i am empty");
+    setitems(items);
+  } else {
+    const searchedItems = items.filter(
+      (element) =>
+        element.color.toLowerCase() === specification ||
+        element.name.toLowerCase() === specification ||
+        element.type.toLowerCase() === specification
+    );
+
+    setitems(searchedItems);
+  }
+};*/

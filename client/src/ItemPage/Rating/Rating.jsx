@@ -4,16 +4,24 @@ import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 import { getAverageRating } from "./utils/getAverageRating";
 
-export const Rating = ({
-  item,
-  fetchItem,
-  addItemToShoppingCart,
-  shoppingCart,
-}) => {
+export const Rating = ({ addItemToShoppingCart, shoppingCart }) => {
   const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
   const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
   const [changeImage, setChangeImage] = useState("");
   const params = useParams();
+  const [item, setItem] = useState();
+
+  const fetchItem = () => {
+    fetch(`http://localhost:8084/api/v1/warehouse/product/${params.id}`)
+      .then((response) => response.json())
+      .then((response) => setItem(response));
+  };
+
+  useEffect(() => {
+    fetchItem();
+  }, []);
+
+  console.log("item:" + item);
 
   useEffect(() => {
     //called when the component renders the 1st time and whenever item changes
@@ -40,8 +48,6 @@ export const Rating = ({
     }
     return count;
   }
-  //console.log(occurencesArray(item));
-  //console.log(item.sizes);
 
   function value(element) {
     let result = 0;
@@ -53,7 +59,6 @@ export const Rating = ({
     }
     return result;
   }
-  //console.log(value(item, 5));
 
   function ratingWidth(rating) {
     const selectedRatings = item.reviews.filter(
@@ -85,36 +90,6 @@ export const Rating = ({
     setReviewDescription(description);
     //this functions saves the value of the new variable
   };
-
-  //button prints the value on the console, but is the input that modifies the variable
-  //this fucntion prints the new description
-  //when we submit the form we need to call the submitReview function and we are using a form so that we only submit when all the requirements(rating and description) are filled
-  /*const submitReview = (event) => {
-    event.preventDefault();
-
-    //python: fetch(`http://localhost:8000/api/garments/${params.id}/reviews`
-    fetch(`http://localhost:8084/api/v1/garments/${params.id}/reviews`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        rating: reviewRating,
-        description: reviewDescription,
-        date: new Date().toLocaleDateString(),
-        garment_id: item.id,
-      }),
-    }).then(() => {
-      //we are setting the rating and review to their initial state so that we
-      //can clear the input after submitting a form
-      setReviewRating();
-      setReviewDescription(""); // this is setting the reviewDescription as an emtpy string,
-      // the inout needs the attribute value to be reviewDescription
-      //cause without the attribute value(on the input) the input can't clear it
-      //now with the value the input is controlled
-      fetchItem();
-    });
-  };*/
 
   const submitReview = (event) => {
     event.preventDefault();
@@ -150,6 +125,8 @@ export const Rating = ({
   const isItemInTheCart = (item) => {
     return shoppingCart.products.includes(item);
   };
+
+  console.log(item);
 
   return (
     <div>
@@ -515,18 +492,5 @@ export const Rating = ({
     </div>
   );
 };
-
-//onClick={giveRating(1)} se for chamado assim corre imediatament qd a page faz load em vez de ser so qd se clica
-//required only works with <form>
-
-//used if we click on the stars, but we gonna click on the input that requires an onChange
-/*<i
-  className={`bi ${
-                        reviewRating >= 1 ? "bi-star-fill" : "bi-star"
-                      }`}
-                      onClick={() => giveRating(1)}
-                    />*/
-
-//on input when using the onChange we also gotta pass the value as a prop VIP to make the input controlled
 
 export default Rating;

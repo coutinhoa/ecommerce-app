@@ -3,9 +3,8 @@ import "./Body.css";
 import clothes from "../../images/Clothes.jpg";
 import zalandoLogo from "../../images/Zalando_logo.svg";
 import { ItemInfo } from "./ItemInfo/ItemInfo";
-import { amountArticles } from "../../utils/amountArticles";
 
-export const Body = ({ shoppingCart, filteredItems, articlesQuantity }) => {
+export const Body = ({ shoppingCart, items, articlesQuantity }) => {
   //const articlesQuantity = amountArticles(shoppingCart);
 
   return (
@@ -39,10 +38,9 @@ export const Body = ({ shoppingCart, filteredItems, articlesQuantity }) => {
         </div>
 
         <div className="each-item">
-          {filteredItems.length === 0 && <span>Item not found</span>}
-          {filteredItems.map(
+          {items.length === 0 && <span>Item not found</span>}
+          {items.map(
             (element) => {
-              console.log(element);
               return (
                 <ItemInfo
                   key={element.id}

@@ -9,7 +9,6 @@ import warehouse.entities.WarehouseProduct;
 import warehouse.repositories.ProductRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -35,19 +34,17 @@ public class ProductService {
         return repository.findAll();
     }
 
-    public WarehouseProduct getOrder(Long id) {
-        System.out.println("find by id");
+    public WarehouseProduct getProduct(Long id) {
         return repository.findById(id).get();
-    }
-
-    public Optional<WarehouseProduct> getGarment(Long id) {
-        System.out.println("find by id");
-        return repository.findById(id);
     }
 
     public Page<WarehouseProduct> getAllProductsPage(int page, int size) {
         Pageable paging = PageRequest.of(page - 1, size);
         return repository.findAll(paging);
+    }
+
+    public List<WarehouseProduct> getProducts(String identity) {
+        return repository.findByIdentity(identity);
     }
 
     /*public Page<WarehouseProduct> getAll(String name, int page, int size) {

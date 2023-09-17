@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import zalandoLogo from "../../images/Zalando_logo.svg";
-import { amountArticles } from "../../utils/amountArticles";
 
 export const Header = ({
-  shoppingCart,
   filterByIdentity,
   handleSearchSubmit,
   articlesQuantity,
@@ -112,23 +110,6 @@ export const Header = ({
                 Warenkorb ({articlesQuantity})
               </span>
             </div>
-            {/*<div className="cart-hover">
-              <div className="go-to-cart">
-                <p>DEIN WARENKORB IST LEER</p>
-                <p>
-                  Leg los und fülle deinen Warenkorb mit den neuesten Fashion
-                  Trends.
-                </p>
-              </div>
-              <div className="go-shopping">
-                DU WEISST NICHT, WO DU ANFANGEN SOLLST?
-                <div>
-                  <a href="#clothingList" className="go-shopping-button">
-                    Zu den Neuheiten
-                  </a>
-                </div>
-              </div>
-          </div>*/}
           </Link>
         </div>
       </div>
