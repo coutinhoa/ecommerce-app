@@ -5,7 +5,7 @@ export const ItemPage = ({
   shoppingCart,
   filterByIdentity,
   handleSearchSubmit,
-  articlesQuantity,
+  cartQuantity,
   addItemToShoppingCart,
 }) => {
   return (
@@ -14,7 +14,7 @@ export const ItemPage = ({
         shoppingCart={shoppingCart}
         filterByIdentity={filterByIdentity}
         handleSearchSubmit={handleSearchSubmit}
-        articlesQuantity={articlesQuantity}
+        articlesQuantity={cartQuantity}
       />
       <Rating
         addItemToShoppingCart={addItemToShoppingCart}

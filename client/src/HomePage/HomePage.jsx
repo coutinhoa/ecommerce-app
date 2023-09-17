@@ -10,6 +10,7 @@ const HomePage = ({
   filterByIdentity,
   handleSearchSubmit,
   cartQuantity,
+  filteredItems,
   items,
 }) => {
   return (
@@ -21,10 +22,11 @@ const HomePage = ({
         articlesQuantity={cartQuantity}
       />
       <Body
-        items={items}
+        filteredItems={filteredItems}
         shoppingCart={shoppingCart}
         filterByIdentity={filterByIdentity}
         articlesQuantity={cartQuantity}
+        items={items}
       />
       <footer className="footer-container">
         <ul className="footer">
@@ -75,7 +77,7 @@ export default HomePage;
   )}
 </div>
 <div className="move-next-page">
-  {items.length === PAGE_SIZE && (
+  {filteredItems.length === PAGE_SIZE && (
     <button className="moving-next-page" onClick={moveNextPage}>
       Next Page<i className="bi bi-chevron-double-right"></i>
     </button>

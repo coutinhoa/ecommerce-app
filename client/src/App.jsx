@@ -76,7 +76,22 @@ export const App = () => {
     removeItem();
   }, []);
 
-  const handleSearchSubmit = (specification) => {};
+  const handleSearchSubmit = (specification) => {
+    if (specification === "") {
+      console.log("i am empty");
+      setItems(items);
+    } else {
+      const searchedItems = items.filter(
+        (element) =>
+          element.colour.toLowerCase() === specification ||
+          element.name.toLowerCase() === specification ||
+          element.type.toLowerCase() === specification
+      );
+      setItems(searchedItems);
+    }
+  };
+  console.log(items);
+
   const updateItemQuantity = () => {};
   const addItemToShoppingCart = () => {};
 
@@ -122,6 +137,7 @@ export const App = () => {
                 handleSearchSubmit={handleSearchSubmit}
                 addItemToShoppingCart={addItemToShoppingCart}
                 cartQuantity={cartQuantity}
+                items={items}
               />
             }
           />
@@ -134,19 +150,3 @@ export const App = () => {
   );
 };
 export default App;
-
-/*const handleSearchSubmit = (specification) => {
-  if (specification === "") {
-    console.log("i am empty");
-    setitems(items);
-  } else {
-    const searchedItems = items.filter(
-      (element) =>
-        element.color.toLowerCase() === specification ||
-        element.name.toLowerCase() === specification ||
-        element.type.toLowerCase() === specification
-    );
-
-    setitems(searchedItems);
-  }
-};*/
