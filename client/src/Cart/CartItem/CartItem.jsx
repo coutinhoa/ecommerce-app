@@ -15,7 +15,6 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
   const handleRemoveItem = () => {
     removeItemFromList(item);
   };
-  console.log(item);
 
   return (
     <li>
@@ -51,7 +50,7 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
           <span className="quantity-label">Quantity:</span>
           <select
             value={item.quantity}
-            onChange={handleChangeQuantity}
+            onChange={(event) => handleChangeQuantity(event, item)}
             className="dropdown"
           >
             {availableOptions.map((n) => (

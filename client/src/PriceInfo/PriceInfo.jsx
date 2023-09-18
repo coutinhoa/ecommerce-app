@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
 
 export const PriceInfo = ({ items }) => {
   //const price = priceArticles(items);
   const price = priceArticles(items);
+  const [order, setOrder] = useState([]);
 
   const delivery = items.products.length === 0 ? 0 : 3;
 
@@ -13,12 +14,10 @@ export const PriceInfo = ({ items }) => {
   const makePurchase = (event) => {
     event.preventDefault();
     fetch(`http://localhost:8081/api/v1/shopping-cart/purchase`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({}),
-    }).then(() => {});
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((response) => setOrder(response));
   };
 
   return (

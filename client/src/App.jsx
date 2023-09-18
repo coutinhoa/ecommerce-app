@@ -125,6 +125,7 @@ export const App = () => {
   };
 
   const updateItemQuantity = (id, newQuantity) => {
+    console.log(shoppingCart);
     fetch(`http://localhost:8081/api/v1/products/product/${id}`, {
       method: "PUT",
       headers: {
@@ -133,9 +134,18 @@ export const App = () => {
       body: JSON.stringify({
         quantity: newQuantity,
       }),
-    }).then(() => {
-      setShoppingCart();
-    });
+    })
+      .then((response) => response.json())
+      .then(() => {
+        const updatedProducts = shoppingCart.products.map((item) =>
+          item.id === id ? { ...item, quantity: newQuantity } : item
+        );
+
+        setShoppingCart((prevCart) => ({
+          ...prevCart,
+          products: updatedProducts,
+        }));
+      });
   };
 
   return (
