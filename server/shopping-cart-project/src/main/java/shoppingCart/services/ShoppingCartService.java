@@ -13,6 +13,7 @@ import shoppingCart.repositories.ShoppingCartRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,15 +39,15 @@ public class ShoppingCartService {
         return shoppingCartRepository.findAll();
     }
 
-    public ShoppingCartDTO createShoppingCart(Long userId, ShoppingCartDTO shoppingCart) {
+    public ShoppingCartDTO createShoppingCart(Long userId, ShoppingCartDTO cart) {
         List<Product> productsList = new ArrayList();
 
         var foundShoppingCart = shoppingCartRepository.findByUserId(userId);
 
         if (foundShoppingCart == null) {
-            ShoppingCart newShoppingCart = shoppingCartRepository.save(shoppingCart.buildShoppingCart());
+            ShoppingCart newShoppingCart = shoppingCartRepository.save(cart.buildShoppingCart());
 
-            for (ProductDTO product : shoppingCart.getProducts()) {
+            for (ProductDTO product : cart.getProducts()) {
                 Product newProduct = product.buildProduct();
                 newProduct.setShopping_cart(newShoppingCart);
                 productsList.add(newProduct);
@@ -62,15 +63,21 @@ public class ShoppingCartService {
             return modelMapper.map(result, ShoppingCartDTO.class);
 
         } else {
-            for (ProductDTO product : shoppingCart.getProducts()) {
+            for (ProductDTO product : cart.getProducts()) {
                 Product newProduct = product.buildProduct();
                 newProduct.setShopping_cart(foundShoppingCart);
-                productsList.add(newProduct);
-                productRepository.saveAll(productsList);
+                Optional<Product> foundProduct = productRepository.findByName(newProduct.getName());
+                if (foundProduct.isPresent()) {
+                    foundProduct.get().setQuantity(foundProduct.get().getQuantity() + 1);
+                    productRepository.save(foundProduct.get());
+                } else {
+                    productsList.add(newProduct);
+                    productRepository.saveAll(productsList);
+                }
             }
         }
 
-        return shoppingCart;
+        return cart;
     }
 
     public ShoppingCart getShoppingByUserId(Long userId) {
