@@ -13,7 +13,7 @@ import java.util.List;
 @Slf4j
 @Transactional
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/products")
 public class ProductController {
     private final ProductService productService;

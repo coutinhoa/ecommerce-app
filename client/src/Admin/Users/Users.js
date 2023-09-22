@@ -27,27 +27,23 @@ function App() {
     fetchContacts();
   }, []);
 
-  /*const fetchContacts = useCallback((pageNumber = 0, pageSize = 10) => {
-    //page=${pageNumber}&pagesize the backend receives the page and pagesize
-    fetch(
-      `http://localhost:8082/api/v1/users?page=${pageNumber}&pagesize=${pageSize}`
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setContacts(response);
-      })
-      .then(setSearchParams({ page: pageNumber, pagesize: pageSize }));
-  }, []);
-
-  useEffect(() => {
+  const deleteContact = async (contact) => {
+    console.log("delete user");
+    console.log(contact);
+    await fetch(`http://localhost:8082/api/v1/users/${contact.id}`, {
+      method: "DELETE",
+    });
     fetchContacts();
-  }, [fetchContacts]);*/
-
-  const deleteContact = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:8082/api/v1/users/${id}`, {
-        method: "DELETE",
-      });
+  };
+  /*try {
+      console.log("delete user");
+      console.log(contacts);
+      const response = await fetch(
+        `http://localhost:8082/api/v1/users/${contacts.id}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (response.status === 200) {
         toast.warning("You deleted a contact!", {
           position: toast.POSITION.TOP_LEFT,
@@ -57,7 +53,7 @@ function App() {
     } catch (error) {
       toast.error("Server disconnected");
     }
-  };
+  };*/
 
   //when we use a form we should use an event
   //if we don't use a form it is a value
@@ -88,7 +84,7 @@ function App() {
               <td>
                 <span
                   className="remove-cursor"
-                  onClick={() => deleteContact(person.id)}
+                  onClick={() => deleteContact(person)}
                 >
                   Delete
                 </span>

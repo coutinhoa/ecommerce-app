@@ -12,8 +12,8 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
     updateItemQuantity(item.id, newQuantity);
   };
 
-  const handleRemoveItem = () => {
-    removeItemFromList(item);
+  const handleRemoveItem = (item) => {
+    removeItemFromList(item.id);
   };
 
   return (
@@ -59,7 +59,7 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
             {/*we want the map to return the jsx with options*/}
           </select>
           <div className="price">Price: {item.price * item.quantity}$</div>
-          <button className="bin-button" onClick={handleRemoveItem}>
+          <button className="bin-button" onClick={() => handleRemoveItem(item)}>
             <img src={binLogo} alt="remove item" className="bin-logo" />{" "}
             <span>Entfernen</span>
           </button>

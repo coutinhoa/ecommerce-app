@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
 
 export const PriceInfo = ({ items }) => {
   //const price = priceArticles(items);
   const price = priceArticles(items);
-  const [order, setOrder] = useState([]);
 
   const delivery = items.products.length === 0 ? 0 : 3;
 
   const total = delivery + price;
 
-  const makePurchase = (event) => {
-    event.preventDefault();
-    fetch(`http://localhost:8081/api/v1/shopping-cart/purchase`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((response) => setOrder(response));
+  const makePurchase = () => {
+    const userId = 5;
+    fetch(`http://localhost:8081/api/v1/shopping-cart/purchase/${userId}`, {
+      method: "POST",
+    }).then(() => {
+      toast.success("Order purchased", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    });
+    console.log("posted");
   };
 
   return (

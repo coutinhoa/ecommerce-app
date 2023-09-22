@@ -84,21 +84,27 @@ public class ShoppingCartService {
         return shoppingCartRepository.findByUserId(userId);
     }
 
-    public void purchaseOrder() {
+    public ShoppingCart purchaseOrder(Long userId) {
+        System.out.println("post");
+        System.out.println(userId);
 
-        /*List<ShoppingCart> cart = shoppingCartRepository.findAll();
+        ShoppingCart cart = shoppingCartRepository.findByUserId(userId);
 
-        for(ShoppingCart product : cart){
+        /*for (ShoppingCart product : cart) {
             product = cart.getProducts();
+
             for (Product product : cart.getProducts()) {
                 int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getProductId()));
                 if (availableQuantityWarehouse < product.getQuantity()) {
                     throw new QuantityNotAvailableException();
                 }
             }
-        }
-        kafkaTemplate.send("shopping-cart-topic", (ShoppingCart) cart);
-        shoppingCartRepository.deleteAll();*/
-
+        }*/
+        System.out.println("cart:" + cart);
+        //send kafka to warehouse a reduce the number of articles
+        //kafkaTemplate.send("shopping-cart-topic", cart);
+        //shoppingCartRepository.deleteByUserId(userId);
+        //productRepository.deleteByShoppingCartId(cart.getId());
+        return shoppingCartRepository.findByUserId(userId);
     }
 }

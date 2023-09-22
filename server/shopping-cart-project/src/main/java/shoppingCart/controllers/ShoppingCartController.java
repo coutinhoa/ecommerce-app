@@ -40,10 +40,10 @@ public class ShoppingCartController {
         return ResponseEntity.ok(shoppingCart);
     }
 
-   /* @GetMapping("/purchase")
-    public ResponseEntity<List<ShoppingCart>> makePurchase() {
-        List<ShoppingCart> createdCart = shoppingCartService.purchaseOrder();
+    @PostMapping("/purchase/{userId}")
+    public ResponseEntity<ShoppingCart> makePurchase(@PathVariable Long userId) {
+        ShoppingCart createdCart = shoppingCartService.purchaseOrder(userId);
         return ResponseEntity.ok(createdCart);
-    }*/
+    }
 
 }

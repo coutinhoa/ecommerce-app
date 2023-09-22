@@ -13,8 +13,8 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/users")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class UserController {
 
     private final UserService userService;

@@ -16,19 +16,6 @@ export const App = () => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [size, setSize] = useState("");
 
-  const getShoppingCart = () => {
-    const userId = 5;
-    fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((response) => setShoppingCart(response));
-  };
-
-  useEffect(() => {
-    getShoppingCart();
-  }, []);
-
   const cartQuantity = shoppingCart?.products?.length;
 
   const filterByIdentity = (identity) => {
@@ -57,20 +44,24 @@ export const App = () => {
     fetchClothes();
   }, []);
 
-  const removeItem = (item) => {
+  const getShoppingCart = () => {
     const userId = 5;
-    fetch(`http://localhost:8081/api/v1/products/${item}`, {
-      method: "DELETE",
+    fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
+      method: "GET",
     })
       .then((response) => response.json())
-      .then(() => {
-        fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
-          method: "GET",
-        });
-        toast.warning("You deleted an item", {
-          position: toast.POSITION.TOP_LEFT,
-        });
-      });
+      .then((response) => setShoppingCart(response));
+  };
+
+  useEffect(() => {
+    getShoppingCart();
+  }, []);
+
+  const removeItem = async (id) => {
+    await fetch(`http://localhost:8081/api/v1/products/${id}`, {
+      method: "DELETE",
+    });
+    getShoppingCart();
   };
 
   useEffect(() => {
@@ -107,7 +98,7 @@ export const App = () => {
             quantity: 1,
             name: item.name,
             type: item.type,
-            price: item.price * item.quantity,
+            price: item.price,
             colour: item.colour,
             premiumDelivery: item.premiumDelivery,
             identity: item.identity,

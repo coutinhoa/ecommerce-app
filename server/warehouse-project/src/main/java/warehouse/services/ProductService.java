@@ -25,9 +25,21 @@ public class ProductService {
     public void reduceAvailableProducts(WarehouseProductDTO productInShoppingCart) {
         int inventory = repository.findQuantityById(Math.toIntExact(productInShoppingCart.getId()));
         var newQuantity = inventory - productInShoppingCart.getAvailableQuantity();
-        //productInShoppingCart.setAvailableQuantity(newQuantity);
         //price needs to be bigdecimal cause it's money
         //repository.save(newQuantity);
+
+//        for (WarehouseProductDTO product : cart.getProducts()) {
+//            Product newProduct = product.buildProduct();
+//            newProduct.setShopping_cart(foundShoppingCart);
+//            Optional<Product> foundProduct = productRepository.findByName(newProduct.getName());
+//            if (foundProduct.isPresent()) {
+//                foundProduct.get().setQuantity(foundProduct.get().getQuantity() + 1);
+//                productRepository.save(foundProduct.get());
+//            } else {
+//                productsList.add(newProduct);
+//                productRepository.saveAll(productsList);
+//            }
+//        }
     }
 
     public List<WarehouseProduct> getAll() {
