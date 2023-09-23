@@ -57,20 +57,10 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: EXTERNAL:PLAINTEXT,CLIENT:PLAINTEXT
-      KAFKA_LISTENERS: EXTERNAL://localhost:29092,CLIENT://kafka-server-1:9092
-      KAFKA_INTER_BROKER_LISTENER_NAME: EXTERNAL
-      KAFKA_ADVERTISED_LISTENERS: EXTERNAL://localhost:29092,CLIENT://kafka-server-1:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092, PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_DEFAULT_REPLICATION_FACTOR_MIN_INSYNC_REPLICAS: 1
-      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      KAFKA_JMX_PORT: 9101
-      KAFKA_JMX_HOSTNAME: localhost
-
 
   product-quantity:
     build:
@@ -91,22 +81,22 @@ services:
 #      - '3006:3006'
 
 
-  #  backend-shopping-cart:
-  #    image: 'shopping-cart-project:latest'
-  #    build:
-  #      context: ./shopping-cart-project
-  #    depends_on:
-  #      - shopping-cart-postgresql
-  #    environment:
-  #      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
-  #      - SPRING_DATASOURCE_USERNAME=user
-  #      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+  backend-shopping-cart:
+    image: 'shopping-cart-project:latest'
+    build:
+      context: ./server/shopping-cart-project
+    depends_on:
+      - shopping-cart-postgresql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=very-secure-password
 
 
 #  backend-order:
 #    image: 'order-project:latest'
 #    build:
-#      context: ./order-project
+#      context: ./server/order-project
 #    depends_on:
 #      - order-postgresql
 #    environment:
@@ -118,7 +108,7 @@ services:
 #  backend-user:
 #    image: 'user-project:latest'
 #    build:
-#      context: ./user-project
+#      context: ./server/user-project
 #    depends_on:
 #      - user-postgresql
 #    environment:
@@ -130,7 +120,7 @@ services:
 #  backend-warehouse:
 #    image: 'warehouse-project:latest'
 #    build:
-#      context: ./warehouse-project
+#      context: ./server/warehouse-project
 #    depends_on:
 #      - warehouse-postgresql
 #    environment:
