@@ -59,11 +59,12 @@ public class OrderService {
             Product product = new Product();
             product.setQuantity(productDTO.getQuantity());
             product.setName(productDTO.getName());
+            product.setPrice(productDTO.getPrice());
             product.setType(productDTO.getType());
             product.setColour(productDTO.getColour());
             product.setPremiumDelivery(productDTO.isPremiumDelivery());
             product.setIdentity(productDTO.getIdentity());
-            product.setProductId(productDTO.getProductId());
+            product.setSize(productDTO.getSize());
             product.setOrder(order);
             products.add(product);
         }

@@ -14,7 +14,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ProductDTO implements Serializable {
     private Long id;
-    //private Long productId;
     private int quantity;
     private String name;
     private String type;

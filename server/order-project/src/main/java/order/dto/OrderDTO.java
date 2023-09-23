@@ -3,7 +3,7 @@ package order.dto;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
@@ -20,6 +20,6 @@ public class OrderDTO implements Serializable {
 
     private double totalPrice;
 
-    private LocalDateTime createdTimestamp;
+    private OffsetDateTime createdTimestamp;
     private List<ProductDTO> products;
 }

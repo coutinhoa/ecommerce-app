@@ -1,5 +1,6 @@
 package order.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,8 @@ public class Order implements Serializable {
     @Column(name = "created_timestamp", nullable = false)
     private OffsetDateTime createdTimestamp;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Product> products = new ArrayList<>();
 
 }

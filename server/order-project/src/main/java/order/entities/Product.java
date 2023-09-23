@@ -1,6 +1,6 @@
 package order.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,18 +23,15 @@ public class Product implements Serializable {
     private int quantity;
 
     @Column(name = "name", nullable = false)
-    @NonNull
     private String name;
 
     @Column(name = "type", nullable = false)
-    @NonNull
     private String type;
 
     @Column(name = "price", nullable = false)
     private double price;
 
     @Column(name = "colour", nullable = false)
-    @NonNull
     private String colour;
 
     @Column(name = "premium_delivery", nullable = false)
@@ -48,10 +45,8 @@ public class Product implements Serializable {
     @NonNull
     private String size;
 
-    @Column(name = "product_id", nullable = false)
-    private Long productId;
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false, referencedColumnName = "id")
-    @JsonIgnore
+    @JsonBackReference
     private Order order;
 }

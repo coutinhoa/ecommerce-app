@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
 
-export const PriceInfo = ({ items }) => {
+export const PriceInfo = ({ items, getShoppingCart }) => {
   //const price = priceArticles(items);
   const price = priceArticles(items);
 
@@ -11,16 +11,21 @@ export const PriceInfo = ({ items }) => {
 
   const total = delivery + price;
 
-  const makePurchase = () => {
+  const makePurchase = async () => {
     const userId = 5;
-    fetch(`http://localhost:8081/api/v1/shopping-cart/purchase/${userId}`, {
-      method: "POST",
-    }).then(() => {
+    await fetch(
+      `http://localhost:8081/api/v1/shopping-cart/purchase/${userId}`,
+      {
+        method: "POST",
+      }
+    );
+    //getShoppingCart();
+
+    /*.then(() => {
       toast.success("Order purchased", {
         position: toast.POSITION.TOP_CENTER,
       });
-    });
-    console.log("posted");
+    });*/
   };
 
   return (

@@ -15,11 +15,10 @@ public class ProductDTO implements Serializable {
     private int quantity;
     private String name;
     private String type;
+    private double price;
     private String colour;
     private boolean premiumDelivery;
     private String identity;
     private String size;
-    private Long productId;
-    private Long orderId;
 
 }

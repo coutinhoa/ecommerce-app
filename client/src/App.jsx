@@ -168,6 +168,7 @@ export const App = () => {
                 updateItemQuantity={updateItemQuantity}
                 removeItemFromList={removeItem}
                 cartQuantity={cartQuantity}
+                getShoppingCart={getShoppingCart}
               />
             }
           />

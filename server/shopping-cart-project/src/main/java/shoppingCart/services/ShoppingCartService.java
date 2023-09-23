@@ -84,11 +84,11 @@ public class ShoppingCartService {
         return shoppingCartRepository.findByUserId(userId);
     }
 
-    public ShoppingCart purchaseOrder(Long userId) {
+    public ShoppingCart purchaseOrder(Long Id) {
         System.out.println("post");
-        System.out.println(userId);
+        System.out.println(Id);
 
-        ShoppingCart cart = shoppingCartRepository.findByUserId(userId);
+        ShoppingCart cart = shoppingCartRepository.findByUserId(Id);
 
         /*for (ShoppingCart product : cart) {
             product = cart.getProducts();
@@ -100,11 +100,10 @@ public class ShoppingCartService {
                 }
             }
         }*/
-        System.out.println("cart:" + cart);
         //send kafka to warehouse a reduce the number of articles
-        //kafkaTemplate.send("shopping-cart-topic", cart);
-        //shoppingCartRepository.deleteByUserId(userId);
+        kafkaTemplate.send("shopping-cart-topic", cart);
+        shoppingCartRepository.deleteByUserId(Id);
         //productRepository.deleteByShoppingCartId(cart.getId());
-        return shoppingCartRepository.findByUserId(userId);
+        return null;//shoppingCartRepository.findByUserId(userId);
     }
 }

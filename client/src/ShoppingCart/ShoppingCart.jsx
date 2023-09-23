@@ -9,6 +9,7 @@ function ShoppingCart({
   updateItemQuantity,
   removeItemFromList,
   cartQuantity,
+  getShoppingCart,
 }) {
   return (
     <div className="ShoppingCart">
@@ -24,7 +25,7 @@ function ShoppingCart({
           updateItemQuantity={updateItemQuantity}
           removeItemFromList={removeItemFromList}
         />
-        <PriceInfo items={shoppingCart} />
+        <PriceInfo items={shoppingCart} getShoppingCart={getShoppingCart} />
       </div>
     </div>
   );
