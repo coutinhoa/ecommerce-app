@@ -4,6 +4,8 @@ import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 import { getAverageRating } from "./utils/getAverageRating";
 
+import { ToastContainer } from "react-toastify";
+
 export const Rating = ({
   shoppingCart,
   size,
@@ -210,6 +212,7 @@ export const Rating = ({
                   onClick={() => addItemToShoppingCart(item)}
                 >
                   In den Warenkorb
+                  <ToastContainer />
                 </div>
                 <div className="wishlist-symbol">
                   <i className="bi bi-heart"></i>

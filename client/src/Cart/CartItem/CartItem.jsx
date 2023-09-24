@@ -2,6 +2,7 @@ import React from "react";
 import "./CartItem.css";
 import binLogo from "../../images/Bin_logo.png";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
   const availableOptions = [1, 2, 3, 4, 5];
@@ -63,6 +64,7 @@ export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
             <img src={binLogo} alt="remove item" className="bin-logo" />{" "}
             <span>Entfernen</span>
           </button>
+          <ToastContainer />
         </div>
       </div>
     </li>

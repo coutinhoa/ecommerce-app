@@ -1,7 +1,7 @@
 import "./Users.css";
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.min.css";
 import HomePage from "./../../HomePage/HomePage";
@@ -30,22 +30,15 @@ function App() {
   const deleteContact = async (contact) => {
     console.log("delete user");
     console.log(contact);
-    await fetch(`http://localhost:8082/api/v1/users/${contact.id}`, {
-      method: "DELETE",
-    });
-    fetchContacts();
-  };
-  /*try {
-      console.log("delete user");
-      console.log(contacts);
+    try {
       const response = await fetch(
-        `http://localhost:8082/api/v1/users/${contacts.id}`,
+        `http://localhost:8082/api/v1/users/${contact.id}`,
         {
           method: "DELETE",
         }
       );
       if (response.status === 200) {
-        toast.warning("You deleted a contact!", {
+        toast.warning("User deleted!", {
           position: toast.POSITION.TOP_LEFT,
         });
       }
@@ -53,7 +46,7 @@ function App() {
     } catch (error) {
       toast.error("Server disconnected");
     }
-  };*/
+  };
 
   //when we use a form we should use an event
   //if we don't use a form it is a value
@@ -88,6 +81,7 @@ function App() {
                 >
                   Delete
                 </span>
+                <ToastContainer />
               </td>
             </tr>
           ))}

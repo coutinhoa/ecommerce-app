@@ -99,6 +99,7 @@ public class ShoppingCartService {
         ShoppingCartDTO cartDTO = modelMapper.map(cart, ShoppingCartDTO.class);
         List<ProductDTO> products = cartDTO.getProducts();
         System.out.println("for cycle:" + products);
+
         for (ProductDTO product : products) {
             int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getId()));
             System.out.println(availableQuantityWarehouse);
@@ -109,8 +110,8 @@ public class ShoppingCartService {
             } else {
                 System.out.println("purchased");
                 kafkaTemplate.send("shopping-cart-topic", cart);
-                //kafkaTemplate.send("update-inventory", cart.getProducts());
-                shoppingCartRepository.deleteByUserId(userId);
+                kafkaTemplate.send("update-inventory", cart.getProducts());
+                //shoppingCartRepository.deleteByUserId(userId);
             }
         }
         //productRepository.deleteByShoppingCartId(cart.getId());

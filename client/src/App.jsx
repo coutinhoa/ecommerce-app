@@ -60,8 +60,12 @@ export const App = () => {
   const removeItem = async (id) => {
     await fetch(`http://localhost:8081/api/v1/products/${id}`, {
       method: "DELETE",
-    });
+    }); /*.then(() => {
+      toast.warning("Product removed from shopping cart", {
+        position: toast.POSITION.TOP_CENTER,
+      });*/
     getShoppingCart();
+    //});
   };
 
   useEffect(() => {
@@ -110,7 +114,6 @@ export const App = () => {
       toast.success("Item added to Cart", {
         position: toast.POSITION.TOP_CENTER,
       });
-      console.log("after toast");
       setShoppingCart();
     });
   };

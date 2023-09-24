@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
+import { ToastContainer } from "react-toastify";
 
 export const PriceInfo = ({ items, getShoppingCart }) => {
   //const price = priceArticles(items);
@@ -18,14 +19,12 @@ export const PriceInfo = ({ items, getShoppingCart }) => {
       {
         method: "POST",
       }
-    );
-    //getShoppingCart();
-
-    /*.then(() => {
+    ).then(() => {
       toast.success("Order purchased", {
         position: toast.POSITION.TOP_CENTER,
       });
-    });*/
+      //getShoppingCart();
+    });
   };
 
   return (
@@ -50,6 +49,7 @@ export const PriceInfo = ({ items, getShoppingCart }) => {
           <button className="button" onClick={makePurchase}>
             Purchase
           </button>
+          <ToastContainer />
         </div>
       </div>
       <div className="border_two">
