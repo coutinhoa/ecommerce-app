@@ -8,6 +8,7 @@ import shoppingCart.dto.ProductDTO;
 import shoppingCart.dto.ShoppingCartDTO;
 import shoppingCart.entities.Product;
 import shoppingCart.entities.ShoppingCart;
+import shoppingCart.exceptions.QuantityNotAvailableException;
 import shoppingCart.repositories.ProductRepository;
 import shoppingCart.repositories.ShoppingCartRepository;
 
@@ -67,6 +68,11 @@ public class ShoppingCartService {
                 Product newProduct = product.buildProduct();
                 newProduct.setShopping_cart(foundShoppingCart);
                 Optional<Product> foundProduct = productRepository.findByName(newProduct.getName());
+                int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getId()));
+
+                if (availableQuantityWarehouse < newProduct.getQuantity()) {
+                    throw new QuantityNotAvailableException();
+                }
                 if (foundProduct.isPresent()) {
                     foundProduct.get().setQuantity(foundProduct.get().getQuantity() + 1);
                     productRepository.save(foundProduct.get());
@@ -84,26 +90,30 @@ public class ShoppingCartService {
         return shoppingCartRepository.findByUserId(userId);
     }
 
-    public ShoppingCart purchaseOrder(Long Id) {
-        System.out.println("post");
-        System.out.println(Id);
+    public ShoppingCart purchaseOrder(Long userId) {
+        System.out.println(userId);
 
-        ShoppingCart cart = shoppingCartRepository.findByUserId(Id);
+        ShoppingCart cart = shoppingCartRepository.findByUserId(userId);
 
-        /*for (ShoppingCart product : cart) {
-            product = cart.getProducts();
-
-            for (Product product : cart.getProducts()) {
-                int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getProductId()));
-                if (availableQuantityWarehouse < product.getQuantity()) {
-                    throw new QuantityNotAvailableException();
-                }
+        ModelMapper modelMapper = new ModelMapper();
+        ShoppingCartDTO cartDTO = modelMapper.map(cart, ShoppingCartDTO.class);
+        List<ProductDTO> products = cartDTO.getProducts();
+        System.out.println("for cycle:" + products);
+        for (ProductDTO product : products) {
+            int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getId()));
+            System.out.println(availableQuantityWarehouse);
+            System.out.println(product.getQuantity());
+            if (availableQuantityWarehouse < product.getQuantity()) {
+                System.out.println("not enough");
+                throw new QuantityNotAvailableException();
+            } else {
+                System.out.println("purchased");
+                kafkaTemplate.send("shopping-cart-topic", cart);
+                //kafkaTemplate.send("update-inventory", cart.getProducts());
+                shoppingCartRepository.deleteByUserId(userId);
             }
-        }*/
-        //send kafka to warehouse a reduce the number of articles
-        kafkaTemplate.send("shopping-cart-topic", cart);
-        shoppingCartRepository.deleteByUserId(Id);
+        }
         //productRepository.deleteByShoppingCartId(cart.getId());
-        return null;//shoppingCartRepository.findByUserId(userId);
+        return shoppingCartRepository.findByUserId(userId);
     }
 }

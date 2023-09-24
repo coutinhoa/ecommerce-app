@@ -1,6 +1,7 @@
 package shoppingCart.dto;
 
 import lombok.*;
+import org.modelmapper.ModelMapper;
 import shoppingCart.entities.Product;
 import shoppingCart.entities.ShoppingCart;
 
@@ -25,8 +26,8 @@ public class ShoppingCartDTO implements Serializable {
     private List<ProductDTO> products;
 
     public ShoppingCart buildShoppingCart() {
-        //ModelMapper modelMapper = new ModelMapper();
-        //modelMapper.map(this, ShoppingCart.class);
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.map(this, ShoppingCart.class);
 
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setId(this.getId());
