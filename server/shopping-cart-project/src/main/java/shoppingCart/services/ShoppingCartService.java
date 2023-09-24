@@ -22,13 +22,13 @@ public class ShoppingCartService {
 
     @Autowired
     private final ShoppingCartRepository shoppingCartRepository;
-    private final KafkaTemplate<String, ShoppingCart> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
     private final ProductQuantityService productQuantityService;
     @Autowired
     private ProductRepository productRepository;
 
     @Autowired
-    ShoppingCartService(KafkaTemplate<String, ShoppingCart> kafkaTemplate,
+    ShoppingCartService(KafkaTemplate<String, Object> kafkaTemplate,
                         ShoppingCartRepository shoppingCartRepository,
                         ProductQuantityService productQuantityService) {
         this.kafkaTemplate = kafkaTemplate;
