@@ -50,7 +50,7 @@ function App() {
               <td className="columns">{product.colour}</td>
               <td className="columns">{product.premiumDelivery}</td>
               <td className="columns">{product.identity}</td>
-              <td className="columns">{product.availableQuantity}</td>
+              <td className="columns">{product.quantity}</td>
             </tr>
           ))}
         </tbody>

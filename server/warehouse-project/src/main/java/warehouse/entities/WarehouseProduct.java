@@ -47,7 +47,7 @@ public class WarehouseProduct {
     private String identity;
 
     @Column(name = "available_quantity", nullable = false)
-    private int availableQuantity;
+    private int quantity;
 
 
     @OneToMany(mappedBy = "garment")

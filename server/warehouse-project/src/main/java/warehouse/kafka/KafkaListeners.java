@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import warehouse.dto.WarehouseProductDTO;
+import warehouse.entities.WarehouseProduct;
 import warehouse.services.ProductService;
 
 @Slf4j
@@ -23,10 +23,15 @@ public class KafkaListeners {
 
     @KafkaListener(topics = "update-inventory", groupId = "foo1")
     void listenerShoppingCart(String jsonData) throws JsonProcessingException {
-        log.info("Message received");
-        log.info(jsonData);
-        WarehouseProductDTO[] products = objectMapper.readValue(jsonData, WarehouseProductDTO[].class);
-        System.out.println("products:" + products);
-        //productService.reduceAvailableProducts(products);
+        try {
+            WarehouseProduct[] products = objectMapper.readValue(jsonData, WarehouseProduct[].class);
+            productService.reduceAvailableProducts(products);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
+
+/* When a message is received from the Kafka topic, Spring Kafka will use the
+configured message converter (typically JSON or Avro) to deserialize the message payload*/

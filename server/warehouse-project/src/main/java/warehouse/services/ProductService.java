@@ -4,11 +4,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import warehouse.dto.WarehouseProductDTO;
 import warehouse.entities.WarehouseProduct;
 import warehouse.repositories.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -22,24 +22,16 @@ public class ProductService {
         return repository.findAvailableProducts();
     }
 
-    public void reduceAvailableProducts(WarehouseProductDTO productInShoppingCart) {
-        int inventory = repository.findQuantityById(Math.toIntExact(productInShoppingCart.getId()));
-        var newQuantity = inventory - productInShoppingCart.getAvailableQuantity();
-        //price needs to be bigdecimal cause it's money
-        //repository.save(newQuantity);
-
-//        for (WarehouseProductDTO product : cart.getProducts()) {
-//            Product newProduct = product.buildProduct();
-//            newProduct.setShopping_cart(foundShoppingCart);
-//            Optional<Product> foundProduct = productRepository.findByName(newProduct.getName());
-//            if (foundProduct.isPresent()) {
-//                foundProduct.get().setQuantity(foundProduct.get().getQuantity() + 1);
-//                productRepository.save(foundProduct.get());
-//            } else {
-//                productsList.add(newProduct);
-//                productRepository.saveAll(productsList);
-//            }
-//        }
+    public void reduceAvailableProducts(WarehouseProduct[] products) {
+        for (WarehouseProduct product : products) {
+            Optional<WarehouseProduct> inventory = repository.findById(product.getId());
+            var newQuantity = inventory.get().getQuantity() - product.getQuantity();
+            System.out.println("product:" + product.getName());
+            product.setQuantity(newQuantity);
+            while (product.getQuantity() >= 0) {
+                repository.save(product);
+            }
+        }
     }
 
     public List<WarehouseProduct> getAll() {

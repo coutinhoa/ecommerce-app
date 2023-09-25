@@ -111,7 +111,7 @@ public class ShoppingCartService {
                 System.out.println("purchased");
                 kafkaTemplate.send("shopping-cart-topic", cart);
                 kafkaTemplate.send("update-inventory", cart.getProducts());
-                //shoppingCartRepository.deleteByUserId(userId);
+                shoppingCartRepository.deleteByUserId(userId);
             }
         }
         //productRepository.deleteByShoppingCartId(cart.getId());

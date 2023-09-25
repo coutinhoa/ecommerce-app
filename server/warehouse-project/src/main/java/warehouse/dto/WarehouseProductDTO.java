@@ -24,6 +24,6 @@ public class WarehouseProductDTO implements Serializable {
     private boolean premiumDelivery;
     private String identity;
 
-    private int availableQuantity;
+    private int quantity;
 
 }
