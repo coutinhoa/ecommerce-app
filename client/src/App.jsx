@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Users from "./Admin/Users/Users";
 import Orders from "./Orders/Orders";
 import Inventory from "./Admin/Inventory/Inventory";
+import SuccessMessage from "./ShoppingCart/SuccessMessage";
 
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
@@ -18,8 +19,8 @@ export const App = () => {
 
   const cartQuantity = shoppingCart?.products?.length;
 
-  const filterByIdentity = (identity) => {
-    fetch(`http://localhost:8084/api/v1/warehouse/${identity}`, {
+  const filterByCategory = (category) => {
+    fetch(`http://localhost:8084/api/v1/warehouse/${category}`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -29,7 +30,7 @@ export const App = () => {
   };
 
   useEffect(() => {
-    filterByIdentity();
+    filterByCategory();
   }, []);
 
   const fetchClothes = () => {
@@ -105,7 +106,7 @@ export const App = () => {
             price: item.price,
             colour: item.colour,
             premiumDelivery: item.premiumDelivery,
-            identity: item.identity,
+            category: item.category,
             size: size,
           },
         ],
@@ -155,7 +156,7 @@ export const App = () => {
             element={
               <HomePage
                 shoppingCart={shoppingCart}
-                filterByIdentity={filterByIdentity}
+                filterByCategory={filterByCategory}
                 handleSearchSubmit={handleSearchSubmit}
                 items={items}
                 cartQuantity={cartQuantity}
@@ -181,7 +182,7 @@ export const App = () => {
             element={
               <ItemPage
                 shoppingCart={shoppingCart}
-                filterByIdentity={filterByIdentity}
+                filterByCategory={filterByCategory}
                 handleSearchSubmit={handleSearchSubmit}
                 cartQuantity={cartQuantity}
                 items={items}
@@ -194,6 +195,7 @@ export const App = () => {
           <Route path="/admin-view" element={<Users />} />
           <Route path="/my-orders" element={<Orders />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route path="/success-message" element={<SuccessMessage />} />
         </Routes>
       </BrowserRouter>
     </>

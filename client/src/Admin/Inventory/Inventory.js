@@ -49,7 +49,7 @@ function App() {
               <td className="columns">{product.price}$</td>
               <td className="columns">{product.colour}</td>
               <td className="columns">{product.premiumDelivery}</td>
-              <td className="columns">{product.identity}</td>
+              <td className="columns">{product.category}</td>
               <td className="columns">{product.quantity}</td>
             </tr>
           ))}

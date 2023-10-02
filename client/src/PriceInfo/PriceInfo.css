@@ -33,7 +33,7 @@
   width: 300px;
 }
 
-.button {
+.purchase-button {
   background-color: #ff4e00;
   border-color: #ff4e00;
   height: 43px;
@@ -42,6 +42,7 @@
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+  margin-left: 15px;
 }
 
 .bold {

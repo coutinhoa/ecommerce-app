@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./Rating.css";
 import zalando from "../../images/Zalando.png";
@@ -18,15 +18,17 @@ export const Rating = ({
   const params = useParams();
   const [item, setItem] = useState();
 
-  const fetchItem = () => {
+  const fetchItem = useCallback(() => {
     fetch(`http://localhost:8084/api/v1/warehouse/product/${params.id}`)
       .then((response) => response.json())
       .then((response) => setItem(response));
-  };
+  }, [params.id]);
 
   useEffect(() => {
-    fetchItem();
-  }, []);
+    if (params.id) {
+      fetchItem();
+    }
+  }, [params.id, fetchItem]);
 
   useEffect(() => {
     //called when the component renders the 1st time and whenever item changes
@@ -139,35 +141,46 @@ export const Rating = ({
   return (
     <div>
       <div className="item-ratings-body">
-        <div className="images-container">
-          <div>
-            <div>
-              <img
-                src={item.pictures[0].url}
-                className="small-photo"
-                alt="first"
-                onMouseOver={handleMouseOver}
-              />
+        <div className="images-description-container">
+          <div className="small-big-images-container">
+            <div className="images-container">
+              <div>
+                <img
+                  src={item.pictures[0].url}
+                  className="small-photo"
+                  alt="first"
+                  onMouseOver={handleMouseOver}
+                />
+              </div>
+              <div>
+                <img
+                  src={item.pictures[1].url}
+                  className="small-photo"
+                  alt="second"
+                  onMouseOver={handleMouseOver}
+                />
+              </div>
+              <div>
+                <img
+                  src={item.pictures[2].url}
+                  className="small-photo"
+                  alt="third"
+                  onMouseOver={handleMouseOver}
+                />
+              </div>
             </div>
-            <div>
-              <img
-                src={item.pictures[1].url}
-                className="small-photo"
-                alt="second"
-                onMouseOver={handleMouseOver}
-              />
-            </div>
-            <div>
-              <img
-                src={item.pictures[2].url}
-                className="small-photo"
-                alt="third"
-                onMouseOver={handleMouseOver}
-              />
+            <div className="image-container">
+              <img src={changeImage} className="item-photo" alt="item" />
             </div>
           </div>
-          <div className="image-container">
-            <img src={changeImage} className="item-photo" alt="item" />
+          <div className="description-container">
+            <span className="description-pencil">
+              <i className="bi bi-pencil"></i>
+            </span>
+            {item.description}
+            <span className="description-pencil">
+              <i className="bi bi-pencil-fill"></i>
+            </span>
           </div>
         </div>
         <div className="body-container">

@@ -75,7 +75,7 @@ JSX would be updateItemQuantity={setItemQuantity}
     //setShoppingCart(cart);
   };*/
 
-/*  const filterByIdentity = (identity) => {
+/*  const filterByCategory = (category) => {
     const newItems = items.filter((element) => element.identity === identity);
     setitems(newItems);
   };*/

@@ -36,9 +36,9 @@ public class Product implements Serializable {
     @Column(name = "premium_delivery", nullable = false)
     private boolean premiumDelivery;
 
-    @Column(name = "identity", nullable = false)
+    @Column(name = "category", nullable = false)
     @NonNull
-    private String identity;
+    private String category;
 
     @Column(name = "size", nullable = false)
     @NonNull

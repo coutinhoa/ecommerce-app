@@ -81,16 +81,16 @@ services:
 #      - '3006:3006'
 
 
-  backend-shopping-cart:
-    image: 'shopping-cart-project:latest'
-    build:
-      context: ./server/shopping-cart-project
-    depends_on:
-      - shopping-cart-postgresql
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+#  backend-shopping-cart:
+#    image: 'shopping-cart-project:latest'
+#    build:
+#      context: ./server/shopping-cart-project
+#    depends_on:
+#      - shopping-cart-postgresql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
+#      - SPRING_DATASOURCE_USERNAME=user
+#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
 
 
 #  backend-order:

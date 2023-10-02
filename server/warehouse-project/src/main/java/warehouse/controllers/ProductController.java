@@ -33,9 +33,9 @@ public class ProductController {
         return service.getProduct(id);
     }
 
-    @GetMapping("/{identity}")
-    List<WarehouseProduct> getProductsByCategory(@PathVariable String identity) {
-        return service.getProducts(identity);
+    @GetMapping("/{category}")
+    List<WarehouseProduct> getProductsByCategory(@PathVariable String category) {
+        return service.getProducts(category);
     }
 
 

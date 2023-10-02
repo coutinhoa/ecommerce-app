@@ -20,7 +20,7 @@ public class ProductDTO implements Serializable {
     private double price;
     private String colour;
     private boolean premiumDelivery;
-    private String identity;
+    private String category;
     private String size;
 
     public Product buildProduct() {
@@ -32,7 +32,7 @@ public class ProductDTO implements Serializable {
         product.setPrice(this.getPrice());
         product.setColour(this.getColour());
         product.setPremiumDelivery(true);
-        product.setIdentity(this.getIdentity());
+        product.setCategory(this.getCategory());
         product.setSize(this.getSize());
 
         return product;

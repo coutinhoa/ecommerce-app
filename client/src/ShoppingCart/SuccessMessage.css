@@ -1,0 +1,65 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  z-index: 1;
+  width: 450px;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px 2px #e9ecef;
+}
+
+.modal-header {
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.done-icon {
+  margin-top: -65px;
+  text-align: center;
+  border-bottom: 1px #e9ecef;
+}
+
+.bi-check-circle-fill {
+  font-size: 100px;
+  color: green;
+  background-color: white;
+}
+
+.success {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.modal-body {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+}
+
+.close {
+  justify-content: center;
+  border-color: green;
+  width: 80%;
+  background-color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: green;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+}

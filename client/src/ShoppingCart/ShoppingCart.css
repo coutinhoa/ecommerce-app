@@ -24,3 +24,9 @@
   display: flex;
   padding-left: 70px;
 }
+
+.blur {
+  display: flex;
+  padding-left: 70px;
+  background-color: rgba(128, 128, 128, 0.053);
+}

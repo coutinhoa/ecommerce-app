@@ -63,7 +63,7 @@ public class OrderService {
             product.setType(productDTO.getType());
             product.setColour(productDTO.getColour());
             product.setPremiumDelivery(productDTO.isPremiumDelivery());
-            product.setIdentity(productDTO.getIdentity());
+            product.setCategory(productDTO.getCategory());
             product.setSize(productDTO.getSize());
             product.setOrder(order);
             products.add(product);

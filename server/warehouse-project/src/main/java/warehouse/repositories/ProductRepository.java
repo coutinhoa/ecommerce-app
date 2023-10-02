@@ -19,8 +19,8 @@ public interface ProductRepository extends JpaRepository<WarehouseProduct, Long>
     @Query("SELECT p FROM WarehouseProduct p WHERE p.quantity>0 ORDER BY p.quantity ASC")
     List<WarehouseProduct> findAvailableProducts();
 
-    @Query("SELECT p FROM WarehouseProduct p WHERE p.identity= :identity")
-    List<WarehouseProduct> findByIdentity(String identity);
+    @Query("SELECT p FROM WarehouseProduct p WHERE p.category= :category")
+    List<WarehouseProduct> findByCategory(String category);
 
     int findQuantityById(int productId);
 

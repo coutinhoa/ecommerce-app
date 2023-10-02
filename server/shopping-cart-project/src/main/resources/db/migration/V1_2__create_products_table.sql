@@ -6,7 +6,7 @@ CREATE TABLE products(
     price double precision,
     colour VARCHAR,
     premium_delivery boolean,
-    identity VARCHAR,
+    category VARCHAR,
     size VARCHAR,
     shopping_cart_id bigserial,
     product_id bigserial

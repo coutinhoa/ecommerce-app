@@ -22,8 +22,9 @@ public class WarehouseProductDTO implements Serializable {
     private String colour;
 
     private boolean premiumDelivery;
-    private String identity;
+    private String category;
 
     private int quantity;
+    private String description;
 
 }

@@ -6,10 +6,24 @@
   position: relative;
 }
 
-.images-container {
+.images-description-container {
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.small-big-images-container {
   display: flex;
   justify-content: space-between;
   position: relative;
+  height: 70%;
+}
+
+.description-container {
+  justify-content: space-between;
+  margin-top: 100px;
+  font-size: medium;
+  text-align: center;
 }
 
 .small-photo {
@@ -31,6 +45,11 @@
   width: 400px;
   height: 500px;
   padding-top: 15px;
+}
+
+.description-pencil {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .body-container {

@@ -1,10 +1,8 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
-import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
-export const PriceInfo = ({ items, getShoppingCart }) => {
+export const PriceInfo = ({ items, getShoppingCart, setSuccessModal }) => {
   //const price = priceArticles(items);
   const price = priceArticles(items);
 
@@ -20,10 +18,8 @@ export const PriceInfo = ({ items, getShoppingCart }) => {
         method: "POST",
       }
     ).then(() => {
-      toast.success("Order purchased", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      //getShoppingCart();
+      getShoppingCart();
+      setSuccessModal(true);
     });
   };
 
@@ -46,10 +42,26 @@ export const PriceInfo = ({ items, getShoppingCart }) => {
             <span className="bold">Gesamtsumme (inkl. MwSt.)</span>
             <span>{total}$</span>
           </div>
-          <button className="button" onClick={makePurchase}>
+          <button className="purchase-button" onClick={makePurchase}>
             Purchase
           </button>
-          <ToastContainer />
+          <Link
+            className="continue_shopping"
+            to={`/success-message`}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              backgroundColor: "orangered",
+              fontWeight: "bold",
+              justifyContent: "center",
+              paddingTop: "10px",
+              paddingBottom: "10px",
+              paddingRight: "10px",
+              paddingLeft: "10px",
+              cursor: "pointer",
+              marginLeft: "42%",
+            }}
+          ></Link>
         </div>
       </div>
       <div className="border_two">

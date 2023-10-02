@@ -47,8 +47,8 @@ public class ProductService {
         return repository.findAll(paging);
     }
 
-    public List<WarehouseProduct> getProducts(String identity) {
-        return repository.findByIdentity(identity);
+    public List<WarehouseProduct> getProducts(String category) {
+        return repository.findByCategory(category);
     }
 
     /*public Page<WarehouseProduct> getAll(String name, int page, int size) {
@@ -74,7 +74,7 @@ public class ProductService {
                     person.setPrice(garment.getPrice());
                     person.setColour(garment.getColour());
                     person.setPremiumDelivery(garment.isPremiumDelivery());
-                    person.setIdentity(garment.getIdentity());
+                    person.setCategory(garment.getCategory());
                     return repository.save(garment);
                 })
                 .orElseGet(() -> {

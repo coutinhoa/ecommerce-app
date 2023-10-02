@@ -6,11 +6,12 @@ CREATE TABLE products(
     colour character VARYING NOT NULL,
     premium_delivery boolean,
     available_quantity int,
-    identity character VARYING NOT NULL,
-    sizes varchar []
+    category character VARYING NOT NULL,
+    sizes varchar [],
+    description varchar
 );
 
-INSERT INTO products (name, type, price, colour, premium_delivery, available_quantity, identity, sizes)
+INSERT INTO products (name, type, price, colour, premium_delivery, available_quantity, category, sizes, description)
   VALUES (
       'Superfit',
       'Sandals',
@@ -18,7 +19,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Black',
       true, 4,
       'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Summer black sandals for men'
     ),
     (
 
@@ -28,7 +30,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Blue',
       false, 3,
       'Kid',
-      ARRAY ['M']
+      ARRAY ['M'],
+      'Baby hat to protect from sun'
     ),
     (
 
@@ -38,7 +41,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Green',
       true, 5,
     'Man',
-    ARRAY ['XS', 'S', 'L']
+    ARRAY ['XS', 'S', 'L'],
+    'Green t-shirt, great for sports'
     ),
     (
 
@@ -48,7 +52,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Strips',
       false,1,
       'Woman',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Woman pants great for work'
     ),
     (
 
@@ -58,7 +63,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Green',
       true,3,
       'Woman',
-      ARRAY ['M', 'S']
+      ARRAY ['M', 'S'],
+      'Can carry a computer and much more'
     ),
     (
 
@@ -68,7 +74,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'White',
       true,19,
       'Man',
-      ARRAY ['S', 'L', 'XL']
+      ARRAY ['S', 'L', 'XL'],
+      'T-shirt for men, great for summer'
     ),
     (
 
@@ -78,7 +85,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Blue',
       false,6,
       'Woman',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Summer skirt'
     ),
     (
 
@@ -88,7 +96,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Camel',
       true,2,
       'Woman',
-       ARRAY ['XS', 'S']
+       ARRAY ['XS', 'S'],
+       'Winter jacket for colder days'
     ),
     (
 
@@ -98,7 +107,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'White',
       true,6,
        'Man',
-       ARRAY ['XS', 'S']
+       ARRAY ['XS', 'S'],
+       'White socks for running'
     ),
     (
 
@@ -108,7 +118,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Blue',
       true,15,
        'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Running shorts'
     ),
     (
 
@@ -118,7 +129,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Blue',
       false,8,
        'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Running shoes'
     ),
     (
 
@@ -128,7 +140,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
        'Black',
        false,6,
       'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Running shorts'
     ),
     (
 
@@ -138,7 +151,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Pink',
        true,0,
       'Kid',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Summer sandals'
     ),
     (
 
@@ -148,7 +162,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
        'Blue',
        true,2,
        'Woman',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Perfect t-shirt for summer'
     ),
     (
 
@@ -158,7 +173,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
        'Orange',
       false,4,
       'Kid',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Perfect t-shirt for summer'
     ),
     (
       'Only',
@@ -167,7 +183,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
        'Denim',
       true,1,
        'Woman',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Everyday shorts'
     ),
     (
      'Only',
@@ -176,7 +193,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
      'Red',
      true,2,
      'Woman',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Summer skirt'
     ),
     (
      'Guess',
@@ -185,7 +203,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
      'Blue',
      true,3,
       'Woman',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Work handbag'
     ),
     (
       'WE Fashion',
@@ -194,7 +213,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Pink',
       true,2,
      'Kid',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Perfect t-shirt for summer'
     ),
     (
      'Calvin Klein',
@@ -203,7 +223,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'White',
      true,0,
       'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Running shoes'
     ),
     (
       'Only',
@@ -212,7 +233,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
      'Green',
      false,4,
       'Woman',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Winter jacket for cold days'
     ),
     (
       'Adidas',
@@ -221,7 +243,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'White',
       true,3,
       'Woman',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Great running shoes'
     ),
     (
       'Nike',
@@ -230,7 +253,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
      'Blue',
       true,1,
      'Man',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Great running shoes'
     ),
     (
       'Nike',
@@ -239,7 +263,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
      'Black',
       false,18,
      'Man',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Running t-shirt'
     ),
     (
       'Nike',
@@ -248,7 +273,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Green',
       true,6,
       'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Running jacket'
     ),
     (
       'Guess',
@@ -257,7 +283,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
       'Brown',
       false,1,
       'Woman',
-       ARRAY ['XS', 'S', 'L']
+       ARRAY ['XS', 'S', 'L'],
+       'Work handbag'
     ),
     (
        'Nike',
@@ -266,7 +293,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
        'Grey',
       true,1,
        'Man',
-      ARRAY ['XS', 'S', 'L']
+      ARRAY ['XS', 'S', 'L'],
+      'Running jacket'
     ),
     (
     'Nike',
@@ -275,7 +303,8 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
     'White',
      false,7,
      'Man',
-    ARRAY ['M', 'XL']
+    ARRAY ['M', 'XL'],
+    'T-shirt perfect for running'
     ),
     (
      'Adidas',
@@ -284,6 +313,7 @@ INSERT INTO products (name, type, price, colour, premium_delivery, available_qua
      'White',
       true,0,
       'Woman',
-     ARRAY ['XS', 'S', 'L']
+     ARRAY ['XS', 'S', 'L'],
+     'Running shoes'
     );
 

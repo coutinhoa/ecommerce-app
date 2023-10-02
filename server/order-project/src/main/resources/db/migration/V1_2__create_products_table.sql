@@ -8,13 +8,13 @@ CREATE TABLE products(
     price double precision,
     colour character VARYING NOT NULL,
     premium_delivery boolean,
-    identity character VARYING NOT NULL,
+    category character VARYING NOT NULL,
     size varchar
 );
 
 
 
-INSERT INTO products (product_id, quantity, order_id, name, type, price, colour, premium_delivery,identity,size)
+INSERT INTO products (product_id, quantity, order_id, name, type, price, colour, premium_delivery,category,size)
 values (5, 3, 1, 'Superfit','Sandals', 20, 'Black', true, 'Man', 'XS'),
 (5, 3, 1, 'Superfit','Sandals', 20, 'Black', true, 'Man', 'M');
 --INSERT INTO products (product_id, quantity, order_id) values (7, 2, 1);

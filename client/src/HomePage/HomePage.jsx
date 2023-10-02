@@ -7,7 +7,7 @@ import zalando from "../images/Zalando.png";
 
 const HomePage = ({
   shoppingCart,
-  filterByIdentity,
+  filterByCategory,
   handleSearchSubmit,
   cartQuantity,
   filteredItems,
@@ -17,14 +17,14 @@ const HomePage = ({
     <div className="home-page" id="home">
       <Header
         shoppingCart={shoppingCart}
-        filterByIdentity={filterByIdentity}
+        filterByCategory={filterByCategory}
         handleSearchSubmit={handleSearchSubmit}
         articlesQuantity={cartQuantity}
       />
       <Body
         filteredItems={filteredItems}
         shoppingCart={shoppingCart}
-        filterByIdentity={filterByIdentity}
+        filterByCategory={filterByCategory}
         articlesQuantity={cartQuantity}
         items={items}
       />

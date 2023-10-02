@@ -23,7 +23,7 @@ public class ProductService {
         return products.stream()
                 .map(product -> new ProductDTO(product.getId(),
                         product.getQuantity(), product.getName(), product.getType(), product.getPrice(),
-                        product.getColour(), product.isPremiumDelivery(), product.getIdentity(),
+                        product.getColour(), product.isPremiumDelivery(), product.getCategory(),
                         product.getSize()))
                 .collect(Collectors.toList());
     }
@@ -37,7 +37,7 @@ public class ProductService {
         return products.stream()
                 .map(product -> new ProductDTO(product.getId(), product.getQuantity(),
                         product.getName(), product.getType(), product.getPrice(),
-                        product.getColour(), product.isPremiumDelivery(), product.getIdentity(),
+                        product.getColour(), product.isPremiumDelivery(), product.getCategory(),
                         product.getSize()))
                 .collect(Collectors.toList());
     }

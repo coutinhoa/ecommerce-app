@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import zalandoLogo from "../../images/Zalando_logo.svg";
 
 export const Header = ({
-  filterByIdentity,
+  filterByCategory,
   handleSearchSubmit,
   articlesQuantity,
 }) => {
@@ -37,20 +37,20 @@ export const Header = ({
       <div className="header-two">
         <div>
           <button
-            className="identity-buttons"
-            onClick={() => filterByIdentity("Woman")}
+            className="category-buttons"
+            onClick={() => filterByCategory("Woman")}
           >
             DAMEN
           </button>
           <button
-            className="identity-buttons"
-            onClick={() => filterByIdentity("Man")}
+            className="category-buttons"
+            onClick={() => filterByCategory("Man")}
           >
             HERREN
           </button>
           <button
-            className="identity-buttons"
-            onClick={() => filterByIdentity("Kid")}
+            className="category-buttons"
+            onClick={() => filterByCategory("Kid")}
           >
             KINDER
           </button>

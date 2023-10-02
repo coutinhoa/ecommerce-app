@@ -3,7 +3,7 @@ import { Rating } from "../ItemPage/Rating/Rating";
 
 export const ItemPage = ({
   shoppingCart,
-  filterByIdentity,
+  filterByCategory,
   handleSearchSubmit,
   cartQuantity,
   size,
@@ -14,7 +14,7 @@ export const ItemPage = ({
     <>
       <Header
         shoppingCart={shoppingCart}
-        filterByIdentity={filterByIdentity}
+        filterByCategory={filterByCategory}
         handleSearchSubmit={handleSearchSubmit}
         articlesQuantity={cartQuantity}
       />
