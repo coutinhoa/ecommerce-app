@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/PriceInfo/PriceInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/PriceInfo/PriceInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/ShoppingCart/ShoppingCart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/ShoppingCart/ShoppingCart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-    </list>
+    <list default="true" id="bdb63241-e43f-40f9-847c-52b8cf983d54" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -83,6 +81,9 @@
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2T1tKpNHzrF2VcVfUGcZ1KaiF4f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -95,11 +96,11 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/couti/Desktop/event-driven-architecture-main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/couti/Desktop/ecommerce-app/server&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -114,11 +115,11 @@
       <recent name="C:\Users\couti\Desktop\event-driven-architecture-main\ShoppingCart\src\main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="warehouse.services" />
+      <recent name="warehouse.repositories" />
       <recent name="warehouse.controllers" />
       <recent name="kafka.services" />
       <recent name="kafka.repositories" />
-      <recent name="kafka.controllers" />
-      <recent name="kafka.dto" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ShoppingCartApplication">
@@ -251,5 +252,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

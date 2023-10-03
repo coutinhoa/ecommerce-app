@@ -19,13 +19,12 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.flywaydb:flyway-core")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:postgresql:1.16.3")
     testImplementation("io.rest-assured:rest-assured:5.3.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
@@ -37,7 +36,6 @@ dependencies {
     testImplementation("org.testcontainers:kafka")
     implementation 'org.apache.kafka:kafka-streams'
     implementation 'org.springframework.kafka:spring-kafka'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
