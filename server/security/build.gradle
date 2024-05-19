@@ -1,0 +1,47 @@
+plugins {
+    id("java")
+    id("org.springframework.boot") version "3.1.1"
+    id("io.spring.dependency-management") version "1.1.0"
+}
+
+group = "security"
+version = "0.0.1-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.postgresql:postgresql'
+    compileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.flywaydb:flyway-core:8.5.13'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:3.2.5"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.release = 17
+}
+
+bootJar {
+    exclude('org.projectlombok:lombok')
+}
+
+

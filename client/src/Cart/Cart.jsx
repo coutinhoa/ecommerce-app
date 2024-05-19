@@ -30,7 +30,7 @@ export const Cart = ({
         <h2>Warenkorb ({articlesQuantity} Artikel)</h2>
         <h5>Versandt durch ZALANDO</h5>
         <ul>
-          {items.products.map((item) => {
+          {items?.products?.map((item) => {
             return (
               <CartItem
                 key={item.name}

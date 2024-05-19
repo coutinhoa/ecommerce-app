@@ -77,7 +77,7 @@ export const Header = ({
             to={`/my-orders`}
           >
             <span>
-              My Orders <i class="bi bi-list-stars"></i>
+              My Orders <i className="bi bi-list-stars"></i>
             </span>
           </Link>
           <Link

@@ -6,7 +6,7 @@ export const PriceInfo = ({ items, getShoppingCart, setSuccessModal }) => {
   //const price = priceArticles(items);
   const price = priceArticles(items);
 
-  const delivery = items.products.length === 0 ? 0 : 3;
+  const delivery = items?.products?.length === 0 ? 0 : 3;
 
   const total = delivery + price;
 

@@ -1,22 +1,55 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import zalandoLogo from "../images/Zalando_logo.svg";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import zalando from "../images/Zalando.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Login() {
+export const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  /*const eyeIconClick = () => {
-  setShowPass((prevPass) => !prevPass); //it's the previuos value of showPass 
-  }; event is onClick={eyeIconClick}*/
+  const handleChangeUsername = (e) => {
+    setUsername(e.target.value);
+  };
 
-  const handleFormSubmit = () => {
-    console.log("form is submitted");
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:8092/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      if (response.ok) {
+        const responseBody = await response.json();
+        localStorage.setItem("token", responseBody.token);
+        toast.success('You are logged in!');
+        setUsername('');
+        setPassword('');
+        navigate('/');
+        console.log(localStorage);
+      } else {
+        toast.error('Login failed. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Login failed. Please try again.');
+    }
   };
 
   return (
     <div className="login-page">
+      <ToastContainer />
       <div className="header">
         <span>
           <Link to={`/`}>
@@ -33,22 +66,25 @@ function Login() {
             <h2>Willkommen zurück</h2>
           </div>
           <div>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleSubmitLogin}>
               <div className="form">
-                <label htmlFor="email" className="label">
-                  E-Mail-Adresse
+                <label htmlFor="username" className="label">
+                  Benutzername
                 </label>
                 <div className="input-text">
                   <div>
                     <i className="bi bi-envelope"></i>
                   </div>
                   <input
-                    id="email"
+                    id="username"
+                    name="username"
                     className="login-data"
-                    type="email"
-                    placeholder="E-Mail Adresse"
+                    type="text"
+                    placeholder="Benutzername"
+                    value={username}
+                    onChange={handleChangeUsername}
                     required
-                  ></input>
+                  />
                 </div>
               </div>
               <div>
@@ -56,18 +92,21 @@ function Login() {
                   Passwort
                 </label>
                 <div className="input-text">
-                  <div id="hidden password">
+                  <div>
                     <i className="bi bi-file-lock"></i>
                   </div>
                   <input
                     id="pass"
+                    name="password"
                     className="login-data"
                     type={showPass ? "text" : "password"}
                     placeholder="Passwort"
+                    value={password}
+                    onChange={handleChangePassword}
                     minLength="7"
                     maxLength="25"
                     required
-                  ></input>
+                  />
                   <div>
                     <span
                       className="pass-button"
@@ -82,15 +121,9 @@ function Login() {
                     </span>
                   </div>
                 </div>
-                <Link
-                  className="cart-link"
-                  style={{ textDecoration: "none", color: "black" }}
-                  to={`/admin-view`}
-                >
-                  <button type="submit" className="submit-button">
-                    Anmelden
-                  </button>
-                </Link>
+                <button type="submit" className="submit-button">
+                  Anmelden
+                </button>
               </div>
             </form>
             <div className="forget-pass">
@@ -102,14 +135,14 @@ function Login() {
       <div className="h-line"></div>
       <section className="new">
         <div>
-          <div>
-            <h2>Ich bin neu hier</h2>
-          </div>
-          <div>
-            <button className="register">Registrieren</button>
-          </div>
+          <h2>Ich bin neu hier</h2>
+          <nav>
+            <Link to="/registration">
+              <button className="register">Registrieren</button>
+            </Link>
+          </nav>
         </div>
-      </section>{" "}
+      </section>
       <footer>
         <ul className="footer">
           <li>Datenschutz</li>
@@ -124,6 +157,6 @@ function Login() {
       </footer>
     </div>
   );
-}
+};
 
-export default Login;
+

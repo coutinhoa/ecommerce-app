@@ -1,4 +1,4 @@
-package warehouse.services;
+/*package warehouse.services;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -57,4 +57,4 @@ public class ElasticSearchProductService {
         productRepository.deleteById(productId);
         productESRepository.deleteById(productId);
     }
-}
+}*/

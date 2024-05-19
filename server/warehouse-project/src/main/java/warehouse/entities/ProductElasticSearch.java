@@ -1,4 +1,4 @@
-package warehouse.entities;
+/*package warehouse.entities;
 
 import jakarta.persistence.Id;
 import lombok.Getter;
@@ -24,6 +24,6 @@ public class ProductElasticSearch {
     private String category;
     @Field(type = FieldType.Text, name = "description")
     private String description;
-}
+}*/
 
 

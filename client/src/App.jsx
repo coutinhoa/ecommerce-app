@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import "./App.css";
-import Login from "./Login/Login";
+import {Login} from "./Login/Login";
 import ItemPage from "../src/ItemPage/ItemPage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ import Users from "./Admin/Users/Users";
 import Orders from "./Orders/Orders";
 import Inventory from "./Admin/Inventory/Inventory";
 import SuccessMessage from "./ShoppingCart/SuccessMessage";
+import {Registration} from "./Registration/Registration";
 
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
@@ -51,7 +52,8 @@ export const App = () => {
       method: "GET",
     })
       .then((response) => response.json())
-      .then((response) => setShoppingCart(response));
+      .then((response) => { console.log(response);
+          setShoppingCart(response)})
   };
 
   useEffect(() => {
@@ -61,17 +63,9 @@ export const App = () => {
   const removeItem = async (id) => {
     await fetch(`http://localhost:8081/api/v1/products/${id}`, {
       method: "DELETE",
-    }); /*.then(() => {
-      toast.warning("Product removed from shopping cart", {
-        position: toast.POSITION.TOP_CENTER,
-      });*/
+    });
     getShoppingCart();
-    //});
   };
-
-  useEffect(() => {
-    removeItem();
-  }, []);
 
   const handleSearchSubmit = (specification) => {
     if (specification === "") {
@@ -196,6 +190,7 @@ export const App = () => {
           <Route path="/my-orders" element={<Orders />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/success-message" element={<SuccessMessage />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </>

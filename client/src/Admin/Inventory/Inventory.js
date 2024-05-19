@@ -9,8 +9,8 @@ function App() {
   const [products, setProducts] = useState([]);
   //const [searchParams, setSearchParams] = useSearchParams();
 
-  //useParams is no bueno cause we use useParams when we want something like this: localhost:3000/1
-  //in this example useParams is useful when we want the page of a single user
+  /*useParams is no bueno cause we use useParams when we want something like this: localhost:3000/1
+  /in this example useParams is useful when we want the page of a single user*/
 
   const getInventory = () => {
     fetch(`http://localhost:8084/api/v1/warehouse`, {
