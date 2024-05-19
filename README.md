@@ -37,20 +37,30 @@ search clothing and modify the items on their shopping cart and make a purchase.
 1. Clone this project to your computer with:
 
 ```sh
-git clone https://github.com/coutinhoa/myZalando.git
+git clone https://github.com/coutinhoa/ecommerce-app.git
 ```
 
 
 ## Usage
 
 1. Run the web application in the terminal:
-
 ```sh
  docker-compose up --build
 ```
-2. Access the application through the browser at http://localhost:3006.
 
-3. Backend Endpoints:
+2. Access the application through the browser at http://localhost:3006 with
+```sh
+npm start 
+```
+
+3. Open each BE project individually (Shopping Cart, Order, User, Warehouse and Security) and run the following command on the terminal:
+```sh
+./gradlew bootRun
+```
+
+4. You are able to use the application now!!
+
+5. Some Backend Endpoints:
 
    POST (makes a purchase and creates an order) -> http://localhost:8081/api/v1/shopping-cart/purchase
 
