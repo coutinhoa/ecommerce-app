@@ -43,7 +43,7 @@ git clone https://github.com/coutinhoa/ecommerce-app.git
 
 ## Usage
 
-1. Run the web application in the terminal:
+1. Run the databases, kafka and grpc in the terminal with docker:
 ```sh
  docker-compose up --build
 ```
@@ -53,7 +53,7 @@ git clone https://github.com/coutinhoa/ecommerce-app.git
 npm start 
 ```
 
-3. Open each BE project individually (Shopping Cart, Order, User, Warehouse and Security) and run the following command on the terminal:
+3. Open each BE project individually (Shopping Cart, Order, User, Warehouse and Security) and run the following command on each the terminal:
 ```sh
 ./gradlew bootRun
 ```
