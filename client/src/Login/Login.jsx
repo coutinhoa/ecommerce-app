@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import zalandoLogo from "../images/Zalando_logo.svg";
 import "./Login.css";
@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 import zalando from "../images/Zalando.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useUser } from "../UserContext";
+import { login } from '../api/auth/login';
 
 export const Login = () => {
+  const { setUser } = useUser();
   const [showPass, setShowPass] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -24,21 +27,15 @@ export const Login = () => {
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8092/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = login(username, password);
       if (response.ok) {
         const responseBody = await response.json();
-        localStorage.setItem("token", responseBody.token);
+        setUser(responseBody);
+        localStorage.setItem("token", responseBody.tokens[0].token);
         toast.success('You are logged in!');
         setUsername('');
         setPassword('');
         navigate('/');
-        console.log(localStorage);
       } else {
         toast.error('Login failed. Please try again.');
       }

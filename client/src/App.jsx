@@ -12,6 +12,8 @@ import Orders from "./Orders/Orders";
 import Inventory from "./Admin/Inventory/Inventory";
 import SuccessMessage from "./ShoppingCart/SuccessMessage";
 import {Registration} from "./Registration/Registration";
+import { UserProvider } from './UserContext';
+import {Profile} from './Profile/Profile';
 
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
@@ -137,63 +139,68 @@ export const App = () => {
       });
   };
 
+/* <UserProvider> Wraps the entire application (or at least the parts that need access to the user state). */
+
   return (
-    <>
-      <header className="header-one">
-        <p>Hilfe und Kontakt</p> <p>KOSTENLOSER VERSAND UND RÜCKVERSAND</p>
-        <p>100 TAGE RÜCKGABERECHT</p>
-      </header>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                shoppingCart={shoppingCart}
-                filterByCategory={filterByCategory}
-                handleSearchSubmit={handleSearchSubmit}
-                items={items}
-                cartQuantity={cartQuantity}
-                fetchClothes={fetchClothes}
-              />
-            }
-          />
-          <Route
-            path="/shopping-cart"
-            element={
-              <ShoppingCart
-                shoppingCart={shoppingCart}
-                updateItemQuantity={updateItemQuantity}
-                removeItemFromList={removeItem}
-                cartQuantity={cartQuantity}
-                getShoppingCart={getShoppingCart}
-              />
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path={"item-details/:id"}
-            element={
-              <ItemPage
-                shoppingCart={shoppingCart}
-                filterByCategory={filterByCategory}
-                handleSearchSubmit={handleSearchSubmit}
-                cartQuantity={cartQuantity}
-                items={items}
-                size={size}
-                setSize={setSize}
-                addItemToShoppingCart={addItemToShoppingCart}
-              />
-            }
-          />
-          <Route path="/admin-view" element={<Users />} />
-          <Route path="/my-orders" element={<Orders />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/success-message" element={<SuccessMessage />} />
-          <Route path="/registration" element={<Registration />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <UserProvider>
+      <>
+        <header className="header-one">
+          <p>Hilfe und Kontakt</p> <p>KOSTENLOSER VERSAND UND RÜCKVERSAND</p>
+          <p>100 TAGE RÜCKGABERECHT</p>
+        </header>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  shoppingCart={shoppingCart}
+                  filterByCategory={filterByCategory}
+                  handleSearchSubmit={handleSearchSubmit}
+                  items={items}
+                  cartQuantity={cartQuantity}
+                  fetchClothes={fetchClothes}
+                />
+              }
+            />
+            <Route
+              path="/shopping-cart"
+              element={
+                <ShoppingCart
+                  shoppingCart={shoppingCart}
+                  updateItemQuantity={updateItemQuantity}
+                  removeItemFromList={removeItem}
+                  cartQuantity={cartQuantity}
+                  getShoppingCart={getShoppingCart}
+                />
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path={"item-details/:id"}
+              element={
+                <ItemPage
+                  shoppingCart={shoppingCart}
+                  filterByCategory={filterByCategory}
+                  handleSearchSubmit={handleSearchSubmit}
+                  cartQuantity={cartQuantity}
+                  items={items}
+                  size={size}
+                  setSize={setSize}
+                  addItemToShoppingCart={addItemToShoppingCart}
+                />
+              }
+            />
+            <Route path="/admin-view" element={<Users />} />
+            <Route path="/my-orders" element={<Orders />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/success-message" element={<SuccessMessage />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </BrowserRouter>
+      </>
+    </UserProvider>
   );
 };
 export default App;

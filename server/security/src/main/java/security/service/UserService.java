@@ -17,15 +17,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final TokenRepository tokenRepository;
-
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
-
-    public User findUserIdByToken(String token){
-       Long userId = tokenRepository.findUserIdByToken(token);
-       return userRepository.findById(userId).orElseThrow();
-    };
 }

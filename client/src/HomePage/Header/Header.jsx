@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import zalandoLogo from "../../images/Zalando_logo.svg";
+import { useUser } from "../../UserContext";
 
 export const Header = ({
   filterByCategory,
@@ -12,6 +13,7 @@ export const Header = ({
 
   //curly brackets need return if we want the function to return smth
 
+  const { setUser } = useUser();
   const [searchTerm, setSearchTerm] = useState("");
 
   const pressEnter = (event) => {
@@ -87,7 +89,7 @@ export const Header = ({
               color: "black",
               cursor: "pointer",
             }}
-            to={`/login`}
+            to={setUser ? `/profile` : `/login`}
           >
             <i className="bi bi-person"></i>
           </Link>

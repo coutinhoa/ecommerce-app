@@ -2,6 +2,7 @@ package security.controller;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,15 +35,14 @@ public class AuthenticationController {
         return ResponseEntity.ok(response);
     }
 
-    //ResponseEntity<AuthenticationResponse>
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody User request, HttpServletResponse response) {
-        var authenticationResult = authService.authenticate(request);
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User user = userService.findUserByUsername(username);
-        //return ResponseEntity.ok(authenticationResult);
-        return ResponseEntity.ok(user);
+        try {
+            authService.authenticate(request);
+            User user = userService.findUserByUsername(request.getUsername());
+            return ResponseEntity.ok(user);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }
