@@ -27,18 +27,12 @@ export const Login = () => {
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = login(username, password);
-      if (response.ok) {
-        const responseBody = await response.json();
-        setUser(responseBody);
-        localStorage.setItem("token", responseBody.tokens[0].token);
-        toast.success('You are logged in!');
-        setUsername('');
-        setPassword('');
-        navigate('/');
-      } else {
-        toast.error('Login failed. Please try again.');
-      }
+      const user = await login(username, password);
+      setUser(user);
+      toast.success('You are logged in!');
+      setUsername('');
+      setPassword('');
+      navigate('/');
     } catch (error) {
       toast.error('Login failed. Please try again.');
     }

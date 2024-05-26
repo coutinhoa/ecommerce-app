@@ -20,9 +20,6 @@ public class Token {
     @Column(name = "token")
     private String token;
 
-    @Column(name = "is_logged_out")
-    private boolean loggedOut;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @JsonIgnore

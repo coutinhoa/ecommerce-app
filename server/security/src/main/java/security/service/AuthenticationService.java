@@ -69,17 +69,18 @@ public class AuthenticationService {
         saveUserToken(jwt, user);
 
         return new AuthenticationResponse(jwt, "User login was successful");
-
     }
+
     private void deleteExistingTokenByUser(User user) {
-        Token validToken = tokenRepository.findAllTokensByUser(Math.toIntExact(user.getId()));
-        tokenRepository.delete(validToken);
+        if(!user.getTokens().isEmpty()){
+            Token validToken = tokenRepository.findAllTokensByUser(Math.toIntExact(user.getId()));
+            tokenRepository.delete(validToken);
+        }
     }
 
     private void saveUserToken(String jwt, User user) {
         Token token = new Token();
         token.setToken(jwt);
-        token.setLoggedOut(false);
         token.setUser(user);
         tokenRepository.save(token);
     }

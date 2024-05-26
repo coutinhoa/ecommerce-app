@@ -12,6 +12,8 @@ import security.model.User;
 import security.service.AuthenticationService;
 import security.service.UserService;
 
+import java.util.Arrays;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST})

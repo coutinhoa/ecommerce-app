@@ -11,7 +11,7 @@ public interface TokenRepository extends JpaRepository<Token, Integer> {
 
     @Query("""
             select t from Token t inner join User u on t.user.id = u.id
-            where t.user.id = :userId and t.loggedOut = false
+            where t.user.id = :userId
             """)
     Token findAllTokensByUser(Integer userId);
 
@@ -20,7 +20,9 @@ public interface TokenRepository extends JpaRepository<Token, Integer> {
     @Query(value = """
            select t.user_id from Token t
            where t.token = :token
-           and t.is_logged_out = false
            """, nativeQuery = true)
     Long findUserIdByToken(String token);
+
+
+    void deleteByToken(String tokenValue);
 }
