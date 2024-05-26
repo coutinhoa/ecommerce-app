@@ -63,26 +63,33 @@ public class ShoppingCartService {
 
             return modelMapper.map(result, ShoppingCartDTO.class);
 
-        } else {
-            for (ProductDTO product : cart.getProducts()) {
-                Product newProduct = product.buildProduct();
-                newProduct.setShopping_cart(foundShoppingCart);
-                Optional<Product> foundProduct = productRepository.findByName(newProduct.getName());
-                int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getId()));
+        }
+        return cart;
+    }
 
-                if (availableQuantityWarehouse < newProduct.getQuantity()) {
-                    throw new QuantityNotAvailableException();
-                }
-                if (foundProduct.isPresent()) {
-                    foundProduct.get().setQuantity(foundProduct.get().getQuantity() + 1);
-                    productRepository.save(foundProduct.get());
-                } else {
-                    productsList.add(newProduct);
-                    productRepository.saveAll(productsList);
-                }
+
+    public ShoppingCartDTO addItemsToShoppingCart(Long userId, ShoppingCartDTO cart) {
+        List<Product> productsList = new ArrayList();
+
+        var foundShoppingCart = shoppingCartRepository.findByUserId(userId);
+
+        for (ProductDTO product : cart.getProducts()) {
+            Product newProduct = product.buildProduct();
+            newProduct.setShopping_cart(foundShoppingCart);
+            Optional<Product> foundProduct = productRepository.findByName(newProduct.getName());
+            int availableQuantityWarehouse = productQuantityService.getProductQuantity(Math.toIntExact(product.getId()));
+
+            if (availableQuantityWarehouse < newProduct.getQuantity()) {
+                throw new QuantityNotAvailableException();
+            }
+            if (foundProduct.isPresent()) {
+                foundProduct.get().setQuantity(foundProduct.get().getQuantity() + 1);
+                productRepository.save(foundProduct.get());
+            } else {
+                productsList.add(newProduct);
+                productRepository.saveAll(productsList);
             }
         }
-
         return cart;
     }
 

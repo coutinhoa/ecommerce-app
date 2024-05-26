@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 @RestController
 @RequestMapping("/shopping-cart")
-@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "http://localhost:3006", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
 
@@ -23,18 +23,23 @@ public class ShoppingCartController {
     }
 
 
-    @GetMapping //postman working
+    @GetMapping
     public ResponseEntity<List<ShoppingCart>> getCart() {
         List<ShoppingCart> shoppingCart = shoppingCartService.getAll();
         return ResponseEntity.ok(shoppingCart);
     }
 
-    @PostMapping("/{userId}") //postman working
+    @PostMapping("/add-items/{userId}")
+    public ShoppingCartDTO addItemsToShoppingCart(@PathVariable Long userId, @RequestBody ShoppingCartDTO shoppingCart) {
+        return shoppingCartService.addItemsToShoppingCart(userId, shoppingCart);
+    }
+
+    @PostMapping("/create/{userId}")
     public ShoppingCartDTO createShoppingCart(@PathVariable Long userId, @RequestBody ShoppingCartDTO shoppingCart) {
         return shoppingCartService.createShoppingCart(userId, shoppingCart);
     }
 
-    @GetMapping("/{userId}") //postman working
+    @GetMapping("/{userId}")
     public ResponseEntity<ShoppingCart> getCartByUser(@PathVariable Long userId) {
         ShoppingCart shoppingCart = shoppingCartService.getShoppingByUserId(userId);
         return ResponseEntity.ok(shoppingCart);

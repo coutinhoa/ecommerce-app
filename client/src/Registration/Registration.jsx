@@ -4,8 +4,11 @@ import "./Registration.css";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { register } from '../api/auth/register';
+import { createCart } from "../api/cart/createCart";
 
 export const Registration = () => {
+  const [shoppingCart, setShoppingCart] = useState([]);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -45,18 +48,17 @@ export const Registration = () => {
         },
         body: JSON.stringify(formData),
       });
-      if (response.ok) {
-        toast.success('Registration successful!');
-        setFormData({  // Clear form fields after successful registration
+
+    const user = await register(formData);
+    await createCart(user.id, []);
+    toast.success('Registration successful!');
+    setFormData({  // Clear form fields after successful registration
           firstName: '',
           lastName: '',
           username: '',
           password: '',
           role: 'USER'
         });
-      } else {
-        toast.error('Registration failed. Please try again.');
-      }
     } catch (error) {
       console.error('Error during registration:', error);
       toast.error('Registration failed. Please try again.');

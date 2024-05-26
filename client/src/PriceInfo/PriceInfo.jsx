@@ -1,8 +1,10 @@
 import "./PriceInfo.css";
 import { priceArticles } from "./utils/priceArticles";
 import { Link } from "react-router-dom";
+import { useUser } from '../UserContext';
 
 export const PriceInfo = ({ items, getShoppingCart, setSuccessModal }) => {
+  const { user } = useUser();
   //const price = priceArticles(items);
   const price = priceArticles(items);
 
@@ -11,7 +13,7 @@ export const PriceInfo = ({ items, getShoppingCart, setSuccessModal }) => {
   const total = delivery + price;
 
   const makePurchase = async () => {
-    const userId = 5;
+    const userId = user.id;
     await fetch(
       `http://localhost:8081/api/v1/shopping-cart/purchase/${userId}`,
       {

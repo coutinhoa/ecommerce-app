@@ -31,14 +31,8 @@ public class CustomLogoutHandler implements LogoutHandler {
         Token storedToken = tokenRepository.findByToken(token).orElse(null);
 
         if(storedToken != null) {
+            System.out.print("token not deleting");
             tokenRepository.delete(storedToken);
         }
     }
 }
-
-
-/*If we decide to handle logout using a separate controller and endpoint,
- we no longer need the CustomLogoutHandler class. This class was previously
- responsible for handling logout logic within the Spring Security configuration.
-In the modified approach where logout is handled separately,
-the CustomLogoutHandler class becomes redundant.*/

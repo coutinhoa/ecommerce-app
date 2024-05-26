@@ -12,13 +12,14 @@ import Orders from "./Orders/Orders";
 import Inventory from "./Admin/Inventory/Inventory";
 import SuccessMessage from "./ShoppingCart/SuccessMessage";
 import {Registration} from "./Registration/Registration";
-import { UserProvider } from './UserContext';
 import {Profile} from './Profile/Profile';
+import { useUser } from './UserContext';
 
 export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
   const [size, setSize] = useState("");
+  const { user } = useUser();
 
   const cartQuantity = shoppingCart?.products?.length;
 
@@ -49,7 +50,7 @@ export const App = () => {
   }, []);
 
   const getShoppingCart = () => {
-    const userId = 5;
+    const userId = user.id;
     fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
       method: "GET",
     })
@@ -59,8 +60,10 @@ export const App = () => {
   };
 
   useEffect(() => {
-    getShoppingCart();
-  }, []);
+    if(user) {
+      getShoppingCart();
+    }
+  }, [user]);
 
   const removeItem = async (id) => {
     await fetch(`http://localhost:8081/api/v1/products/${id}`, {
@@ -85,8 +88,8 @@ export const App = () => {
   };
 
   const addItemToShoppingCart = (item) => {
-    const userId = 5;
-    fetch(`http://localhost:8081/api/v1/shopping-cart/${userId}`, {
+    const userId = user.id;
+    fetch(`http://localhost:8081/api/v1/shopping-cart/add-items/${userId}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -116,7 +119,6 @@ export const App = () => {
   };
 
   const updateItemQuantity = (id, newQuantity) => {
-    console.log(shoppingCart);
     fetch(`http://localhost:8081/api/v1/products/product/${id}`, {
       method: "PUT",
       headers: {
@@ -142,7 +144,6 @@ export const App = () => {
 /* <UserProvider> Wraps the entire application (or at least the parts that need access to the user state). */
 
   return (
-    <UserProvider>
       <>
         <header className="header-one">
           <p>Hilfe und Kontakt</p> <p>KOSTENLOSER VERSAND UND RÜCKVERSAND</p>
@@ -200,7 +201,6 @@ export const App = () => {
           </Routes>
         </BrowserRouter>
       </>
-    </UserProvider>
   );
 };
 export default App;

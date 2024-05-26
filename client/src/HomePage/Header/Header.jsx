@@ -13,7 +13,7 @@ export const Header = ({
 
   //curly brackets need return if we want the function to return smth
 
-  const { setUser } = useUser();
+  const { user } = useUser();
   const [searchTerm, setSearchTerm] = useState("");
 
   const pressEnter = (event) => {
@@ -89,7 +89,7 @@ export const Header = ({
               color: "black",
               cursor: "pointer",
             }}
-            to={setUser ? `/profile` : `/login`}
+            to={user ? `/profile` : `/login`}
           >
             <i className="bi bi-person"></i>
           </Link>
