@@ -1,5 +1,5 @@
 export const register = async (formData) => {
-      const response = await fetch('http://localhost:8092/register', {
+      const response = await fetch('http://localhost:8082/api/v1/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

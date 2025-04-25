@@ -2,7 +2,7 @@ export const logout = async () => {
   try {
     const token = localStorage.getItem("token");
 
-    const response = await fetch('http://localhost:8092/logout', {
+    const response = await fetch('http://localhost:8082/api/v1/logout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

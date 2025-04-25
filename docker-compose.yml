@@ -81,58 +81,66 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
 
-#  frontend:
-#    image: node:18-alpine
-#    container_name: frontend
-#    build:
-#      context: ./client/
-#    ports:
-#      - '3006:3006'
+  #frontend:
+  #  image: node:18-alpine
+  #  container_name: frontend
+  #  build:
+  #    context: ./client/
+  #  ports:
+  #    - '3006:3006'
 
 
-#  backend-shopping-cart:
-#    image: 'shopping-cart-project:latest'
-#    build:
-#      context: ./server/shopping-cart-project
-#    depends_on:
-#      - shopping-cart-postgresql
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
-#      - SPRING_DATASOURCE_USERNAME=user
-#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+  backend-shopping-cart:
+    image: 'shopping-cart-project:latest'
+    build:
+      context: ./server/shopping-cart-project
+    ports:
+      - "8081:8081"
+    depends_on:
+      - shopping-cart-postgresql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://shopping-cart-postgresql:5432/shopping_cart_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=very-secure-password
 
 
-#  backend-order:
-#    image: 'order-project:latest'
-#    build:
-#      context: ./server/order-project
-#    depends_on:
-#      - order-postgresql
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-postgresql:5432/order_db
-#      - SPRING_DATASOURCE_USERNAME=user
-#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
-#
-#
-#  backend-user:
-#    image: 'user-project:latest'
-#    build:
-#      context: ./server/user-project
-#    depends_on:
-#      - user-postgresql
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-postgresql:5432/user_db
-#      - SPRING_DATASOURCE_USERNAME=user
-#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+  backend-order:
+    image: 'order-project:latest'
+    build:
+      context: ./server/order-project
+    ports:
+      - "8083:8083"
+    depends_on:
+      - order-postgresql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-postgresql:5432/order_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=very-secure-password
 
 
-#  backend-warehouse:
-#    image: 'warehouse-project:latest'
-#    build:
-#      context: ./server/warehouse-project
-#    depends_on:
-#      - warehouse-postgresql
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://warehouse-postgresql:5432/warehouse_db
-#      - SPRING_DATASOURCE_USERNAME=user
-#      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+  backend-user:
+    image: 'user-project:latest'
+    build:
+      context: ./server/user-project
+    depends_on:
+      - user-postgresql
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-postgresql:5432/user_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=very-secure-password
+
+
+  backend-warehouse:
+    image: 'warehouse-project:latest'
+    build:
+      context: ./server/warehouse-project
+    ports:
+      - "8084:8084"
+    depends_on:
+      - warehouse-postgresql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://warehouse-postgresql:5432/warehouse_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=very-secure-password
